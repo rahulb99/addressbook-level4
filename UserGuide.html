@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>AddressBook Level 4 - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>ePiggy - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>AddressBook Level 4 - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>ePiggy - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team W17-4</code>      Since: <code>Feb 2019</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -14,19 +14,24 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></li>
-<li><a href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></li>
-<li><a href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></li>
-<li><a href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></li>
-<li><a href="#selecting-a-person-code-select-code">3.7. Selecting a person : <code>select</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.11. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.13. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#adding-an-expense-code-add-code">3.2. Adding an expense : <code>add</code></a></li>
+<li><a href="#listing-all-expenses-code-list-code">3.3. Listing all expenses : <code>list</code></a></li>
+<li><a href="#editing-an-expense-code-edit-code">3.4. Editing an expense : <code>edit</code></a></li>
+<li><a href="#deleting-an-expense-code-delete-code">3.5. Deleting an expense : <code>delete</code></a></li>
+<li><a href="#login-to-epiggy-code-login-code">3.6. Login to ePiggy : <code>login</code></a></li>
+<li><a href="#viewing-an-expense-code-view-code">3.7. Viewing an expense : <code>view</code></a></li>
+<li><a href="#add-an-autocomplete-item-code-additem-code">3.8. Add an autocomplete item : <code>addItem</code></a></li>
+<li><a href="#add-expense-category-code-addcategory-code">3.9. Add expense category : <code>addCategory</code></a></li>
+<li><a href="#set-spending-budget-code-setbudget-code">3.10. Set spending budget : <code>setBudget</code></a></li>
+<li><a href="#search-for-an-expense-code-search-code">3.11. Search for an expense : <code>search</code></a></li>
+<li><a href="#sorting-the-expenses-code-sort-code">3.12. Sorting the expenses : <code>sort</code></a></li>
+<li><a href="#forecast-spendings-code-forecast-code">3.13. Forecast spendings : <code>forecast</code></a></li>
+<li><a href="#recommend-future-spendings-code-recommend-code">3.14. Recommend future spendings : <code>recommend</code></a></li>
+<li><a href="#generate-report-code-report-code">3.15. Generate report : <code>report</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.16. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.17. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.18. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#compare-between-users-code-coming-in-v2-0-code">3.19. Compare between users <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -38,57 +43,42 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook Level 4 (AB4) is for those who <strong>prefer to use a desktop app for managing contacts</strong>. More importantly, AB4 is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB4 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>As a student, it is important to start learning how to manage your spendings. Your expenses can be very regular (school fees,
+campus canteen food, school supplies, daily bus rides, etc) but you still need to manage them. ePiggy is specially targeted at students and students’ spending habits. It allows you to manage, analyse and forecast your
+expenses while recommending you ways you can better manage your finance!<br>
+Interested? Click on the Quick Start to get started!</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Follow these steps to start using ePiggy:<br>
+<strong>1.</strong> Install Java (version 9 or later) on your computer by going here and downloading the Java SE Runtime Environment for your operating system.<br>
+<strong>2.</strong> Download the latest <strong><code>ePiggy.jar</code></strong> file from here<br>
+<strong>3.</strong> Copy the file to the folder which you want to use as the home folder for your Expense Tracker.<br>
+<strong>4.</strong>  Double-click the <strong><code>ePiggy.jar</code></strong> file to start the app.<br>
+The GUI will appear and look like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Ui.png" alt="Ui" width="760">
+</div>
+</div>
+<div class="paragraph">
+<p><em>Figure 1. The user interface on application launch</em></p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ensure you have Java version <code>9</code> or later installed in your Computer.</p>
+<p>Type in <strong><code>USERNAME</code></strong> in the text box (the box where it says "Your Username <strong>"). E.g. *<code>username123</code></strong></p>
 </li>
 <li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/se-edu/addressbook-level4/releases">here</a>.</p>
+<p>Type in <strong><code>PASSWORD</code></strong> in the text box (the box where it says "Your Password <strong>"). E.g. *<code>pd123</code></strong></p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
-</li>
-<li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
-</div>
-</div>
-</li>
-<li>
-<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
-</li>
-<li>
-<p>Some example commands you can try:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
-</li>
-<li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
-</li>
-<li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
-</li>
-<li>
-<p><strong><code>exit</code></strong> : exits the app</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
+<p>Press <strong><code>Register</code></strong> button and you are now able to use all the features of the app.</p>
 </li>
 </ol>
 </div>
@@ -105,16 +95,16 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/EXPENSE_NAME</code>, <code>EXPENSE_NAME</code> is a parameter which can be used as <code>add n/Chicken Rice</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional e.g <code>n/EXPENSE_NAME [t/TAG]</code> can be used as <code>n/Chicken Rice t/School</code> or as <code>n/Chicken Rice</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/school</code>, <code>t/hawker t/school</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
+<p>Parameters can be in any order e.g. if the command specifies <code>n/EXPENSE_NAME $/COST</code>, <code>$/COST n/EXPENSE_NAME</code> is also acceptable.</p>
 </li>
 </ul>
 </div>
@@ -123,76 +113,51 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect2">
 <h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
 <div class="paragraph">
-<p>Format: <code>help</code></p>
+<p>Lists all the user commands with their syntax and descriptions.
+Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
+<h3 id="adding-an-expense-code-add-code"><a class="link" href="#adding-an-expense-code-add-code">3.2. Adding an expense : <code>add</code></a></h3>
 <div class="paragraph">
-<p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-A person can have any number of tags (including 0)
-</td>
-</tr>
-</table>
+<p>Adds a new expense record to the Expense Tracker.<br>
+Format: <code>add n/EXPENSE_NAME $/COST c/CATEGORY [d/DATE] [a/ADDRESS] [t/TAG]…</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Example:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
+<p><code>add n/Chicken rice set $/5 c/Food d/2019-02-21 a/311 Clementi Ave 2 #02_25 t/Lunch</code></p>
 </li>
 <li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+<p>Adds an expense with its name as "Chicken rice set", cost as "5.00", category as "Food", date as "2019-02-21", address as "Clementi Ave 2 #02-25" and tag as "Lunch".</p>
+</li>
+<li>
+<p><code>add n/Chicken rice set $/5 c/Food</code></p>
+</li>
+<li>
+<p>Adds an expense with its name as "Chicken rice set", cost as "5.00", category as "Food" and date as current date by default.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
+<h3 id="listing-all-expenses-code-list-code"><a class="link" href="#listing-all-expenses-code-list-code">3.3. Listing all expenses : <code>list</code></a></h3>
 <div class="paragraph">
-<p>Shows a list of all persons in the address book.<br>
+<p>Lists the expense records from newest to oldest.<br>
 Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
+<h3 id="editing-an-expense-code-edit-code"><a class="link" href="#editing-an-expense-code-edit-code">3.4. Editing an expense : <code>edit</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
-</li>
-<li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
-</li>
-</ul>
-</div>
-</div>
+<p>Edits an existing expense of a specific user at a specific <code><strong>INDEX</code></strong> .<br>
+The <strong><code>INDEX</code></strong> refers to the number in the displayed Expenses List which is next to the name of the expense. Existing values of
+the expense will be changed according to the value of the parameters.
+Edits an existing person in the address book.<br>
+Format: <code>edit INDEX [n/EXPENSE_NAME] [$/COST] [c/CATEGORY] [d/DATE] [t/TAG]…</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -200,83 +165,159 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
+<p><code>edit 1 n/pen $1 c/supplies</code><br>
+Edits the name, cost and category of the 1st expense in the Expense List to ‘pen’, ‘$1’ and ‘supplies’ respectively.</p>
 </li>
 <li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+<p><code>edit 2 c/food</code><br>
+Edits the category of the 2nd expense in the Expense List to ‘food’.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></h3>
+<h3 id="deleting-an-expense-code-delete-code"><a class="link" href="#deleting-an-expense-code-delete-code">3.5. Deleting an expense : <code>delete</code></a></h3>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
-</li>
-<li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
-</li>
-<li>
-<p>Only the name is searched.</p>
-</li>
-<li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
-</li>
-<li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find John</code><br>
-Returns <code>john</code> and <code>John Doe</code></p>
-</li>
-<li>
-<p><code>find Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></h3>
-<div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
+<p>Deletes the expense at the specified INDEX. The INDEX refers to the number in the displayed Expenses List which is next to
+the name of the expense.<br>
 Format: <code>delete INDEX</code></p>
 </div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 1</code><br>
+Deletes the first expense in the Expense List from Expense Tracker.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="login-to-epiggy-code-login-code"><a class="link" href="#login-to-epiggy-code-login-code">3.6. Login to ePiggy : <code>login</code></a></h3>
+<div class="paragraph">
+<p>Logs in to Expense Tracker as an existing user.<br>
+Format: <code>login u/USERNAME p/PASSWORD</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>login u/johndoe1990 p/password123</code><br>
+Logs into the johndoe1990 user account.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-an-expense-code-view-code"><a class="link" href="#viewing-an-expense-code-view-code">3.7. Viewing an expense : <code>view</code></a></h3>
+<div class="paragraph">
+<p>View the details of the selected <strong><code>INDEX</code></strong>.<br>
+Format: <code>view INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>view 3</code><br>
+View will display more information on item 3 , (eg. tags, entry description, etc.)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-an-autocomplete-item-code-additem-code"><a class="link" href="#add-an-autocomplete-item-code-additem-code">3.8. Add an autocomplete item : <code>addItem</code></a></h3>
+<div class="paragraph">
+<p>Adds an autocomplete item with fixed cost, category, and tags, for future reference.<br>
+Autocomplete items will appear when adding a new expense: a list of items will popup after typing <strong><code>add n/</code></strong><br>
+Format: <code>addItem n/EXPENSE_NAME $/COST c/CATEGORY [t/TAG]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addItem n/Chicken-rice $/5 c/Food</code><br>
+Adds an autocomplete item called <code>Chicken Rice</code>, that is $5 with the <code>Food</code> tag</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-expense-category-code-addcategory-code"><a class="link" href="#add-expense-category-code-addcategory-code">3.9. Add expense category : <code>addCategory</code></a></h3>
+<div class="paragraph">
+<p>Adds an expense category.<br>
+Format: <code>addCategory c/CATEGORY</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addCategory c/Food</code><br>
+Creates a new category called <code>Food</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="set-spending-budget-code-setbudget-code"><a class="link" href="#set-spending-budget-code-setbudget-code">3.10. Set spending budget : <code>setBudget</code></a></h3>
+<div class="paragraph">
+<p>Sets a total spending budget for a certain time period. The time period will be in terms of weeks, and 1 week is the minimum
+a person can set a budget for.<br>
+The setBudget command is case sensitive.<br>
+Format: <code>setBudget [$/MONEY_WITH_TWO_DECIMAL_PLACES] [t/TIME_PERIOD_IN_WEEKS]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>setBudget $500.00 t/4</code><br>
+Sets a total budget of $500.00 for each month.</p>
+</li>
+<li>
+<p><code>setBudget $10000.00 t/52</code><br>
+Sets a total budget of $10000.00 for each year.</p>
+</li>
+</ul>
+</div>
 <div class="sidebarblock">
 <div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed person list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
+<div class="paragraph">
+<p><strong>Additional Information:</strong><br>
+<strong><code>MONEY_WITH_TWO_DECIMAL_PLACES</code></strong> must be a positive number with two decimal places.<br>
+<strong><code>TIME_PERIOD_IN_WEEKS</code></strong> must be a positive whole number.</p>
 </div>
 </div>
+</div>
+<div class="paragraph">
+<p><strong>Notify when budget finishing.</strong><br>
+The Expense Tracker will show a warning message to the user when the budget is finishing.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BudgetUi.png" alt="BudgetUi" width="760">
+</div>
+</div>
+<div class="paragraph">
+<p><em>Figure 3: Shows budget is finishing</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-for-an-expense-code-search-code"><a class="link" href="#search-for-an-expense-code-search-code">3.11. Search for an expense : <code>search</code></a></h3>
+<div class="paragraph">
+<p>The user can search for any entry(expense) in the list, by specifying either it’s name, category, date added (or range of dates),
+or amount range.<br>
+Format: <code>search -[n/c/d/$] [NAME/CATEGORY/DATE RANGE/AMOUNT RANGE]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -284,40 +325,38 @@ Format: <code>delete INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in the address book.</p>
+<p><code>search -n MCDONALDS</code><br>
+Displays all entries with the name “MCDONALDS”.</p>
 </li>
 <li>
-<p><code>find Betsy</code><br>
-<code>delete 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
+<p><code>search -c FOOD</code><br>
+Displays all entries with the category specified (in this case, it’s food).</p>
+</li>
+<li>
+<p><code>search -d 2019/01/02 2020/12/05</code><br>
+Displays all entries listed in the range 2nd Jan 2019 to 5th Dec 2020.</p>
+</li>
+<li>
+<p><code>search -$ 250 500</code><br>
+Displays all entries listed with the price range of $250 to $500.</p>
 </li>
 </ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">3.7. Selecting a person : <code>select</code></a></h3>
-<div class="paragraph">
-<p>Selects the person identified by the index number used in the displayed person list.<br>
-Format: <code>select INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Selects the person and loads the Google search page the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed person list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
-</li>
-</ul>
+<div class="paragraph">
+<p><strong>Additional Information:</strong><br>
+Searches and displays the entry(expense) along with its information, according to the user-specified command.<br>
+If entry is not found, it displays appropriate error message.</p>
 </div>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sorting-the-expenses-code-sort-code"><a class="link" href="#sorting-the-expenses-code-sort-code">3.12. Sorting the expenses : <code>sort</code></a></h3>
+<div class="paragraph">
+<p>The user can sort the entries (expenses) in the list, by name, date added, or amount in ascending or descending order.<br>
+Format: <code>sort -[n/d/$] -[A/D]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -325,58 +364,37 @@ Format: <code>select INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-<code>select 2</code><br>
-Selects the 2nd person in the address book.</p>
+<p><code>sort -n</code><br>
+Sorts all entries by name (in ascending order).</p>
 </li>
 <li>
-<p><code>find Betsy</code><br>
-<code>select 1</code><br>
-Selects the 1st person in the results of the <code>find</code> command.</p>
+<p><code>sort -d -A</code><br>
+Sorts all entries by date in ascending order.</p>
+</li>
+<li>
+<p><code>sort -$ -D</code><br>
+Sorts all entries by amount in descending order.</p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></h3>
+<div class="sidebarblock">
+<div class="content">
 <div class="paragraph">
-<p>Lists all the commands that you have entered in reverse chronological order.<br>
-Format: <code>history</code></p>
+<p><strong>Additional Information:</strong><br>
+Sorts the entries, according to the user-specified command.<br>
+A and D are optional arguments which determine whether user wants the expenses sorted in ascending or
+descending, respectively. Unless otherwise explicitly mentioned, then it will be assumed to be ascending order.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command box.</p>
 </div>
-</td>
-</tr>
-</table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="forecast-spendings-code-forecast-code"><a class="link" href="#forecast-spendings-code-forecast-code">3.13. Forecast spendings : <code>forecast</code></a></h3>
 <div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
-</div>
-</td>
-</tr>
-</table>
+<p>Forecasts the user’s spendings in the input time period based on the user’s current spending habits. This is done assuming
+that the user maintains similar spendings in subsequent weeks. User will input the subsequent number of weeks he wishes to
+forecast.<br>
+Format: <code>forecast [t/TIME_PERIOD_IN_WEEKS]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -384,30 +402,60 @@ Format: <code>undo</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1</code><br>
-<code>list</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<p><code>forecast t/2</code><br>
+Forecasts the total amount of money user spends in the next 2 weeks.</p>
 </li>
 <li>
-<p><code>select 1</code><br>
-<code>list</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<p><code>forecast t/52</code><br>
+Forecasts the total amount of money user spends in the next year.</p>
 </li>
 </ul>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Additional Information:</strong><br>
+<code>TIME_PERIOD_IN_WEEKS</code> must be a positive whole number.<br>
+The expenses list should have at least one day’s worth of expenses.</p>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="recommend-future-spendings-code-recommend-code"><a class="link" href="#recommend-future-spendings-code-recommend-code">3.14. Recommend future spendings : <code>recommend</code></a></h3>
 <div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
+<p>Users are required to set a budget before being able to use this command. Recommends the user a daily limit he needs to
+have in order to satisfy the budget and the income the user needs to have if the user intends to maintain current spending
+habits.<br>
+Format: <code>recommend</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>recommend</code><br>
+Recommends the user a daily limit and the income the user needs to achieve to maintain current spending habits
+while staying below budget.</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Additional Information:</strong><br>
+The expenses list should have at least one day’s worth of expenses.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="generate-report-code-report-code"><a class="link" href="#generate-report-code-report-code">3.15. Generate report : <code>report</code></a></h3>
+<div class="paragraph">
+<p>Generates a report of the given day, month, or year. The report consists of total inflow, total outflow, and proprtion of income
+spent on different categories.<br>
+Format: <code>report y/YEAR [m/MONTH] [d/DATE]</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -415,51 +463,52 @@ Format: <code>redo</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
+<p><code>report y/2019 m/1 d/25</code><br>
+View the spending records for 25th of January 2019.</p>
 </li>
 <li>
-<p><code>delete 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
+<p><code>report y/2018 m/12</code><br>
+View the spending records for December 2018.</p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.11. Clearing all entries : <code>clear</code></a></h3>
+<div class="sidebarblock">
+<div class="content">
 <div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
+<p><strong>Additional Information:</strong><br>
+MM and DD will be optional arguments.<br>
+If only YYYY is included, a yearly report will be generated.<br>
+If YYYY and MM are provided, then a monthly report will be generated.<br>
+If YYYY, MM and DD are provided, then the daily report will be generated.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.16. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.13. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.17. Saving the data</a></h3>
 <div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
+<p>ePiggy data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.18. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>User can enable/disable data encryption to secure their files.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="compare-between-users-code-coming-in-v2-0-code"><a class="link" href="#compare-between-users-code-coming-in-v2-0-code">3.19. Compare between users <code>[coming in v2.0]</code></a></h3>
+<div class="paragraph">
+<p>Compares between different users.
+Requires multiple accounts in the same network.</p>
 </div>
 </div>
 </div>
@@ -469,7 +518,7 @@ There is no need to save manually.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ePiggy folder.</p>
 </div>
 </div>
 </div>
@@ -479,11 +528,16 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p><strong>Add</strong> <code>add n/EXPENSE_NAME $/COST c/CATEGORY [d/DATE] [t/TAG]…</code><br>
+e.g. <code>add n/Lunch $/5.00 c/Drink</code></p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code></p>
+<p><strong>Add Category</strong> <code>addCategory c/CATEGORY</code><br>
+e.g. <code>addCategory c/Food</code></p>
+</li>
+<li>
+<p><strong>Add Item</strong> <code>addItem n/EXPENSE_NAME $/COST c/CATEGORY [t/TAG]</code><br>
+e.g. <code>addItem n/Chicken-rice $/5 c/Food</code></p>
 </li>
 <li>
 <p><strong>Delete</strong> : <code>delete INDEX</code><br>
@@ -494,29 +548,42 @@ e.g. <code>delete 3</code></p>
 e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
-</li>
-<li>
-<p><strong>List</strong> : <code>list</code></p>
+<p><strong>Forecast</strong> : <code>forecast [t/TIME_PERIOD_IN_WEEKS]</code><br>
+e.g. <code>forecast t/2</code></p>
 </li>
 <li>
 <p><strong>Help</strong> : <code>help</code></p>
 </li>
 <li>
-<p><strong>Select</strong> : <code>select INDEX</code><br>
-e.g.<code>select 2</code></p>
+<p><strong>List</strong> : <code>list</code></p>
 </li>
 <li>
-<p><strong>History</strong> : <code>history</code></p>
+<p><strong>Login</strong> <code>login u/USERNAME p/PASSWORD</code><br>
+e.g. <code>login u/johndoe1990 p/password123</code></p>
 </li>
 <li>
-<p><strong>Undo</strong> : <code>undo</code></p>
+<p><strong>Search</strong> : <code>search -[n/c/d/a] [NAME/CATEGORY/DATE RANGE/AMOUNT RANGE]</code><br>
+e.g.<code>search -n MCDONALDS</code></p>
 </li>
 <li>
-<p><strong>Redo</strong> : <code>redo</code></p>
+<p><strong>Set Budget</strong> : <code>setBudget [$/MONEY_WITH_TWO_DECIMAL_PLACES] [t/TIME_PERIOD_IN_WEEKS]</code><br>
+e.g.<code>setBudget $500.00 t/4</code></p>
+</li>
+<li>
+<p><strong>Sort</strong> : <code>sort -[n/d/a] -[A/D]</code><br>
+e.g.<code>sort -n</code></p>
+</li>
+<li>
+<p><strong>Recommend</strong> : <code>recommend</code></p>
+</li>
+<li>
+<p><strong>Report</strong> : <code>report</code></p>
+</li>
+<li>
+<p><strong>View</strong> <code>view INDEX</code><br>
+e.g. <code>view 3</code></p>
 </li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-01-06 15:43:39 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-03 05:47:48 UTC</div></div></div></body></html>
