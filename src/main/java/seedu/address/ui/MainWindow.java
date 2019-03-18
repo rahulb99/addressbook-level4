@@ -34,6 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     private BrowserPanel browserPanel;
     private PersonListPanel personListPanel;
     private ExpenseListPanel expenseListPanel;
+    private BudgetPanel budgetPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -51,6 +52,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane expenseListPanelPlaceholder;
+
+    @FXML
+    private StackPane budgetPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -127,6 +131,9 @@ public class MainWindow extends UiPart<Stage> {
                 logic.selectedExpenseProperty(), expense -> {
         }); //TODO
         expenseListPanelPlaceholder.getChildren().add(expenseListPanel.getRoot());
+
+        budgetPanel = new BudgetPanel(logic.getBudget());
+        budgetPanelPlaceholder.getChildren().add(budgetPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());

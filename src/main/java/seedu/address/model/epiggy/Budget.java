@@ -1,9 +1,5 @@
 package seedu.address.model.epiggy;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 import seedu.address.model.epiggy.item.Date;
 import seedu.address.model.epiggy.item.Period;
 import seedu.address.model.epiggy.item.Price;
@@ -17,6 +13,8 @@ public class Budget {
     private final Date startDate;
     private final Date endDate;
     private final Period period;
+    private Price remainingAmount;
+    private Period remainingDays;
 
     /**
      * Represents a Budget in the expense book.
@@ -27,6 +25,28 @@ public class Budget {
         this.startDate = startDate;
         this.period = period;
         this.endDate = calculateEndDate(startDate, period);
+    }
+
+    /**
+     * Calculates the end date = startDate + period (number of days)
+     * @param startDate
+     * @param period
+     * @return endDate
+     */
+    private Date calculateEndDate(Date startDate, Period period) {
+        return startDate.addDays(period.getTimePeriod());
+    }
+
+    private void setRemainingAmount(Price remainingAmount) {
+        this.remainingAmount = remainingAmount;
+    }
+
+    private void setRemainingDays(Period remainingDays) {
+        this.remainingDays = remainingDays;
+    }
+
+    public Price getRemainingAmount() {
+        return remainingAmount;
     }
 
     public Price getPrice() {
@@ -45,30 +65,6 @@ public class Budget {
         return this.endDate;
     }
 
-    /**
-     * Calculates the end date = startDate + period (number of days)
-     * @param startDate
-     * @param period
-     * @return endDate
-     */
-    private Date calculateEndDate(Date startDate, Period period) {
-        // int noOfDays = period.getTimePeriod();
-        // LocalDate endDate = (LocalDate)startDate.plus(period, ChronoUnit.WEEKS);
-        Calendar calendar = Calendar.getInstance();
-        String parseDate = startDate.toString();
-        java.util.Date start;
-
-        try {
-            start = new SimpleDateFormat("dd/MM/yyyy").parse(parseDate);
-            calendar.setTime(start);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        calendar.add(Calendar.DAY_OF_YEAR, period.getTimePeriod());
-        return new Date(calendar.getTime().toString());
-    }
-
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
@@ -76,7 +72,7 @@ public class Budget {
                 .append(getPrice())
                 .append(" for every ")
                 .append(getPeriod())
-                .append(" weeks starting from ")
+                .append(" days starting from ")
                 .append(getStartDate())
                 .append(" till ")
                 .append(getEndDate());
