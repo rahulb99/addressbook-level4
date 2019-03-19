@@ -15,6 +15,10 @@ public class Price {
         this.amount = amount;
     }
 
+    public Price deduct(Price amountToDeduct) {
+        return new Price(this.amount - amountToDeduct.getAmount());
+    }
+
     public int getAmount() {
         return amount;
     }

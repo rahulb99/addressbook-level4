@@ -24,6 +24,13 @@ public class ViewBudgetCommand extends Command {
         requireNonNull(model);
         // The display of budget should be done in model, eg. model.getBudgetDetails
         Budget budget = model.getBudget().getValue();
-        return new CommandResult(MESSAGE_SUCCESS);
+        String budgetMessage = "--Budget Details--\n"
+                + "Budgeted Amount: $" + budget.getPrice()
+                + "\nStart Date: " + budget.getStartDate()
+                + "\nEnd Date: " + budget.getEndDate()
+                + "\n--Current Status--\n"
+                + "Remaining Days: " + budget.getRemainingDays()
+                + "\nRemaining Amount: $" + budget.getRemainingAmount();
+        return new CommandResult(budgetMessage);
     }
 }

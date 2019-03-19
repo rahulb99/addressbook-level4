@@ -19,16 +19,17 @@
                 <Insets top="5" right="5" bottom="5" left="15" />
             </padding>
             <HBox spacing="5" alignment="CENTER_LEFT">
-                <Label fx:id="id" styleClass="cell_big_label">
+                <Label fx:id="budgetedAmount" styleClass="cell_big_label">
                     <minWidth>
                         <!-- Ensures that the label text is never truncated -->
                         <Region fx:constant="USE_PREF_SIZE" />
                     </minWidth>
                 </Label>
-                <Label fx:id="remainingAmount" text="\$first" styleClass="cell_big_label" />
             </HBox>
-            <FlowPane fx:id="tags" />
-            <Label fx:id="date" styleClass="cell_small_label" text="\$date" />
+            <Label fx:id="startDate" styleClass="cell_small_label" text="\$startDate" />
+            <Label fx:id="endDate" styleClass="cell_small_label" text="\$endDate" />
+            <Label fx:id="period" styleClass="cell_small_label" text="\$period" />
+            <Label fx:id="remainingAmount" styleClass="cell_small_label" text="\$remainingAmount" />
             <Label fx:id="remainingDays" styleClass="cell_small_label" text="\$remainingDays" />
         </VBox>
     </GridPane>

@@ -25,6 +25,21 @@ public class Budget {
         this.startDate = startDate;
         this.period = period;
         this.endDate = calculateEndDate(startDate, period);
+        this.remainingAmount = amount;
+        this.remainingDays = period;
+    }
+
+    /**
+     * Represents a Budget in the expense book.
+     * Guarantees: details are present and not null, field values are validated, immutable.
+     */
+    public Budget() {
+        this.amount = new Price(0);
+        this.startDate = new Date(01, 01, 2000);
+        this.period = new Period(0);
+        this.endDate = this.startDate;
+        this.remainingAmount = amount;
+        this.remainingDays = period;
     }
 
     /**
@@ -45,9 +60,15 @@ public class Budget {
         this.remainingDays = remainingDays;
     }
 
+    public void deductRemainingAmount(Price amountToDeduct) {
+        this.remainingAmount = this.remainingAmount.deduct(amountToDeduct);
+    }
+
     public Price getRemainingAmount() {
         return remainingAmount;
     }
+
+    public Period getRemainingDays() { return remainingDays; }
 
     public Price getPrice() {
         return this.amount;
@@ -70,7 +91,7 @@ public class Budget {
         final StringBuilder builder = new StringBuilder();
         builder.append("$")
                 .append(getPrice())
-                .append(" for every ")
+                .append(" for ")
                 .append(getPeriod())
                 .append(" days starting from ")
                 .append(getStartDate())
