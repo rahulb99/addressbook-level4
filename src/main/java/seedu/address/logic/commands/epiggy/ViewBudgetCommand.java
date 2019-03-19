@@ -2,7 +2,6 @@ package seedu.address.logic.commands.epiggy;
 
 import static java.util.Objects.requireNonNull;
 
-import javafx.beans.property.SimpleObjectProperty;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -24,7 +23,7 @@ public class ViewBudgetCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) {
         requireNonNull(model);
         // The display of budget should be done in model, eg. model.getBudgetDetails
-        SimpleObjectProperty<Budget> budget = model.getBudget();
+        Budget budget = model.getBudget().getValue();
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

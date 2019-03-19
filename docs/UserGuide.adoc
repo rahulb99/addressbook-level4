@@ -54,7 +54,7 @@ _Figure 1. The user interface on application launch_
 Lists all the user commands with their syntax and descriptions.
 Format: `help`
 
-=== Adding an expense : `add`
+=== Adding an expense : `addExpense`
 
 Adds a new expense record to the Expense Tracker. +
 Format: `addExpense n/EXPENSE_NAME $/COST t/CATEGORY [d/DATE] [a/NAME_OF_THE_SHOP] [t/TAG]…`
@@ -66,6 +66,16 @@ Adds an expense with its name as "Chicken rice set", cost as "5.00", category as
 
 * `add n/Chicken rice set $/5 c/Food` +
 Adds an expense with its name as "Chicken rice set", cost as "5.00", category as "Food" and date as current date by default.
+
+=== Add an allowance: `addAllowance`
+
+Adds a new allowance record to the Expense Tracker. +
+Format: `addAllowance $/AMOUNT`
+
+Example:
+
+* `addAllowance $/10` +
+Adds an allowance entry of $10 to the expense tracker.
 
 === Add an autocomplete item : `addItem`
 
@@ -190,35 +200,15 @@ Sets a total budget of $10000.00 every 15 days.
 ****
 *Additional Information:* +
 *`MONEY_WITH_TWO_DECIMAL_PLACES`* must be a positive number with two decimal places. +
-*`TIME_PERIOD_IN_WEEKS`* must be a positive whole number.
+*`TIME_PERIOD_IN_DAYS`* must be a positive whole number.
 ****
 
-*Notify when budget finishing.* +
-The Expense Tracker will show a warning message to the user when the budget is finishing.
+*Display status of budget.* +
+The Expense Tracker will show the status of the budget whenever a new expense is added.
 
 image::BudgetUi.png[width="760"]
-_Figure 3: Shows budget is finishing_
+_Figure 3: Shows budget status_
 
-
-=== Forecast spendings : `forecast`
-
-Forecasts the user’s spendings in the input time period based on the user’s current spending habits. This is done assuming
-that the user maintains similar spendings in subsequent weeks. User will input the subsequent number of weeks he wishes to
-forecast. +
-Format: `forecast [t/TIME_PERIOD_IN_WEEKS]`
-
-Examples:
-
-* `forecast t/2` +
-Forecasts the total amount of money user spends in the next 2 weeks.
-* `forecast t/52` +
-Forecasts the total amount of money user spends in the next year.
-
-****
-*Additional Information:* +
-`TIME_PERIOD_IN_WEEKS` must be a positive whole number. +
-The expenses list should have at least one day’s worth of expenses.
-****
 
 === Recommend future spendings : `recommend`
 
@@ -258,6 +248,16 @@ If YYYY and MM are provided, then a monthly report will be generated. +
 If YYYY, MM and DD are provided, then the daily report will be generated.
 ****
 
+=== View Savings: `viewSavings`
+
+Show details of the net amount of money recorded in ePiggy. +
+Format: `viewSavings`
+
+Example:
+
+* `viewSavings` +
+View the net amount of money recorded in ePiggy.
+
 === Set Savings Goal: `setGoal`
 
 Sets the item and the amount that the user wishes to save up for. +
@@ -266,7 +266,17 @@ Format: `setGoal n/ITEM_NAME $/AMOUNT`
 Example:
 
 * `setGoal n/nike shoes $/80` +
-Sets the goal to an $80 Nike shoe
+Sets the goal to an $80 Nike shoe.
+
+=== View Savings Goal: `viewGoal`
+
+Show details about the current goal set by the user. +
+Format: `viewGoal`
+
+Example:
+
+* `viewGoal` +
+Views the current goal set by the user.
 
 === View Goal Progress: `viewGoalProgress`
 

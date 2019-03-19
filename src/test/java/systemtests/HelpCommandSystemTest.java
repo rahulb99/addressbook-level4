@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.ui.testutil.GuiTestAssert.assertListMatching;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import guitests.GuiRobot;
@@ -20,6 +21,7 @@ import seedu.address.ui.StatusBarFooter;
 /**
  * A system test class for the help window, which contains interaction with other UI components.
  */
+@Ignore
 public class HelpCommandSystemTest extends AddressBookSystemTest {
     private static final String ERROR_MESSAGE = "ATTENTION!!!! : On some computers, this test may fail when run on "
             + "non-headless mode as FxRobot#clickOn(Node, MouseButton...) clicks on the wrong location. We suspect "
