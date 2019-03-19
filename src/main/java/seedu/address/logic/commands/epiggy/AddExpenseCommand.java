@@ -10,7 +10,7 @@ import seedu.address.model.Model;
 import seedu.address.model.epiggy.Expense;
 
 /**
- * Adds a person to the toAdd book.
+ * Adds a expense to the toAdd book.
  */
 public class AddExpenseCommand extends Command {
 
@@ -33,7 +33,7 @@ public class AddExpenseCommand extends Command {
 
         model.addExpense(toAdd);
 
-        model.commitAddressBook();
+        model.commitExpenseList();
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 }

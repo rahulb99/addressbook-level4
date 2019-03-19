@@ -8,16 +8,16 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.epiggy.Budget;
-import seedu.address.model.epiggy.Expense;
+import seedu.address.model.epiggy.ExpenseContainsKeywordsPredicate;
 import seedu.address.model.epiggy.Goal;
-import seedu.address.model.person.Person;
+import seedu.address.model.epiggy.Expense;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
-    Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    Predicate<Expense> PREDICATE_SHOW_ALL_EXPENSES = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -52,31 +52,25 @@ public interface Model {
     /**
      * Replaces address book data with the data in {@code addressBook}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setAddressBook(ReadOnlyExpenseList expenseList);
 
-    /** Returns the AddressBook */
-    ReadOnlyAddressBook getAddressBook();
+    /** Returns the EPiggy */
+    ReadOnlyExpenseList getExpenseList();
 
-    /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
-     */
-    boolean hasPerson(Person person);
-
-    /**
-     * Deletes the given person.
-     * The person must exist in the address book.
-     */
-    void deletePerson(Person target);
+//    /**
+//     * Returns true if a expense with the same identity as {@code expense} exists in the address book.
+//     */
+//    boolean hasPerson(Expense expense);
 
     /**
-     * Adds the given person.
-     * {@code person} must not already exist in the address book.
+     * Deletes the given expense.
+     * The expense must exist in the address book.
      */
-    void addPerson(Person person);
+    void deleteExpense(Expense target);
 
     /**
      * Adds the given expense.
-     * {@code person} must not already exist in the address book.
+     * {@code expense} must not already exist in the address book.
      */
     void addExpense(Expense expense);
 
@@ -96,75 +90,73 @@ public interface Model {
     void setGoal(Goal goal);
 
     /**
-     * Replaces the given person {@code target} with {@code editedPerson}.
+     * Replaces the given expense {@code target} with {@code editedExpense}.
      * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * The expense identity of {@code editedExpense} must not be the same as another existing expense in the address book.
      */
-    void setPerson(Person target, Person editedPerson);
-
-    /** Returns an unmodifiable view of the filtered person list */
-    ObservableList<Person> getFilteredPersonList();
+    void setExpense(Expense target, Expense editedExpense);
 
     /** Returns an unmodifiable view of the filtered expense list */
-    ObservableList<Expense> getFilteredExpenseList();
+    ObservableList<seedu.address.model.epiggy.Expense> getFilteredExpenseList();
 
 
     /**
-     * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered expense list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredPersonList(Predicate<Person> predicate);
+    void updateFilteredExpenseList(Predicate<seedu.address.model.epiggy.Expense> predicate);
 
     /**
      * Returns true if the model has previous address book states to restore.
      */
-    boolean canUndoAddressBook();
+    boolean canUndoExpenseList();
 
     /**
      * Returns true if the model has undone address book states to restore.
      */
-    boolean canRedoAddressBook();
+    boolean canRedoExpenseList();
 
     /**
      * Restores the model's address book to its previous state.
      */
-    void undoAddressBook();
+    void undoExpenseList();
 
     /**
      * Restores the model's address book to its previously undone state.
      */
-    void redoAddressBook();
+    void redoExpenseList();
 
     /**
      * Saves the current address book state for undo/redo.
      */
-    void commitAddressBook();
+    void commitExpenseList();
 
     /**
-     * Selected person in the filtered person list.
-     * null if no person is selected.
-     */
-    ReadOnlyProperty<Person> selectedPersonProperty();
-
-    /**
-     * Selected person in the filtered person list.
-     * null if no person is selected.
+     * Selected expense in the filtered expense list.
+     * null if no expense is selected.
      */
     ReadOnlyProperty<Expense> selectedExpenseProperty();
 
     /**
-     * Returns the selected person in the filtered person list.
-     * null if no person is selected.
+     * Returns the selected expense in the filtered expense list.
+     * null if no expense is selected.
      */
-    Person getSelectedPerson();
-
-    /**
-     * Sets the selected person in the filtered person list.
-     */
-    void setSelectedPerson(Person person);
+    Expense getSelectedExpense();
 
     /**
      * Sets the selected expense in the filtered expense list.
      */
     void setSelectedExpense(Expense expense);
+
+    /**
+     * Finds expenses based on user-specified parameters
+     * @param predicate
+     */
+    void find(ExpenseContainsKeywordsPredicate predicate);
+
+    /**
+     * To check for input of parameters
+     * @return true if there are input arguments
+     */
+    boolean hasParameters();
 }

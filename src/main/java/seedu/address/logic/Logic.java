@@ -8,9 +8,9 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.epiggy.Expense;
-import seedu.address.model.person.Person;
+import seedu.address.model.Model;
+import seedu.address.model.ReadOnlyExpenseList;
+import seedu.address.model.person.Expense;
 
 /**
  * API of the Logic component
@@ -26,17 +26,15 @@ public interface Logic {
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
     /**
-     * Returns the AddressBook.
+     * Returns the EPiggy.
      *
-     * @see seedu.address.model.Model#getAddressBook()
+     * @see Model#getExpenseList()
      */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyExpenseList getAddressBook();
+
 
     /** Returns an unmodifiable view of the filtered list of persons */
-    ObservableList<Person> getFilteredPersonList();
-
-    /** Returns an unmodifiable view of the filtered list of persons */
-    ObservableList<Expense> getFilteredExpenseList();
+    ObservableList<seedu.address.model.epiggy.Expense> getFilteredExpenseList();
 
     /**
      * Returns an unmodifiable view of the list of commands entered by the user.
@@ -59,13 +57,6 @@ public interface Logic {
      */
     void setGuiSettings(GuiSettings guiSettings);
 
-    /**
-     * Selected person in the filtered person list.
-     * null if no person is selected.
-     *
-     * @see seedu.address.model.Model#selectedPersonProperty()
-     */
-    ReadOnlyProperty<Person> selectedPersonProperty();
 
     /**
      * Selected expense in the filtered expense list.
@@ -73,19 +64,13 @@ public interface Logic {
      *
      * @see seedu.address.model.Model#selectedExpenseProperty()
      */
-    ReadOnlyProperty<Expense> selectedExpenseProperty();
+    ReadOnlyProperty<seedu.address.model.epiggy.Expense> selectedExpenseProperty();
+
 
     /**
-     * Sets the selected person in the filtered person list.
+     * Sets the selected expense in the filtered expense list.
      *
-     * @see seedu.address.model.Model#setSelectedPerson(Person)
+     * @see seedu.address.model.Model#setSelectedExpense(seedu.address.model.epiggy.Expense)
      */
-    void setSelectedPerson(Person person);
-
-    /**
-     * Sets the selected expense in the filtered person list.
-     *
-     * @see seedu.address.model.Model#setSelectedExpense(Expense)
-     */
-    void setSelectedExpense(Expense expense);
+    void setSelectedExpense(seedu.address.model.epiggy.Expense expense);
 }

@@ -10,16 +10,18 @@ import java.util.logging.Logger;
 
 import javafx.beans.property.ReadOnlyProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.epiggy.Budget;
-import seedu.address.model.epiggy.Expense;
+import seedu.address.model.epiggy.ExpenseContainsKeywordsPredicate;
 import seedu.address.model.epiggy.Goal;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.epiggy.Expense;
+import seedu.address.model.person.exceptions.ExpenseNotFoundException;
+import seedu.address.model.person.exceptions.NoParametersException;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -27,33 +29,31 @@ import seedu.address.model.person.exceptions.PersonNotFoundException;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final VersionedAddressBook versionedAddressBook;
+    private final VersionedEPiggy versionedEPiggy;
     private final UserPrefs userPrefs;
-    private final FilteredList<Person> filteredPersons;
-    private final FilteredList<Expense> filteredExpenses;
-    private final SimpleObjectProperty<Person> selectedPerson = new SimpleObjectProperty<>();
-    private final SimpleObjectProperty<Expense> selectedExpense = new SimpleObjectProperty<>();
+
+    private final FilteredList<seedu.address.model.epiggy.Expense> filteredExpenses;
+    private final SimpleObjectProperty<seedu.address.model.epiggy.Expense> selectedExpense = new SimpleObjectProperty<>();
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyExpenseList addressBook, ReadOnlyUserPrefs userPrefs) {
         super();
         requireAllNonNull(addressBook, userPrefs);
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
-        versionedAddressBook = new VersionedAddressBook(addressBook);
+        versionedEPiggy = new VersionedEPiggy(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(versionedAddressBook.getPersonList());
-        filteredPersons.addListener(this::ensureSelectedPersonIsValid);
 
-        filteredExpenses = new FilteredList<>(versionedAddressBook.getExpenseList());
+        filteredExpenses = new FilteredList<>(versionedEPiggy.getExpenseList());
+        filteredExpenses.addListener(this::ensureSelectedExpenseIsValid);
         //TODO
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new EPiggy(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -91,174 +91,183 @@ public class ModelManager implements Model {
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    // TODO: To check if input arguments are given or not (using parser)
+    @Override
+    public boolean hasParameters() {
+        return true;
+    }
+
+    private void requireParameters() throws NoParametersException {
+        if (!hasParameters()) {
+            throw new NoParametersException();
+        }
+    }
+
+    //=========== EPiggy ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        versionedAddressBook.resetData(addressBook);
+    public void setAddressBook(ReadOnlyExpenseList expenseList) {
+        versionedEPiggy.resetData(expenseList);
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return versionedAddressBook;
+    public ReadOnlyExpenseList getExpenseList() {
+        return versionedEPiggy;
     }
 
-    @Override
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return versionedAddressBook.hasPerson(person);
-    }
+//    @Override
+//    public boolean hasPerson(Expense expense) {
+//        requireNonNull(expense);
+//        return versionedEPiggy.hasPerson(expense);
+//    }
 
     @Override
-    public void deletePerson(Person target) {
-        versionedAddressBook.removePerson(target);
-    }
-
-    @Override
-    public void addPerson(Person person) {
-        versionedAddressBook.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    public void deleteExpense(Expense target) {
+        versionedEPiggy.removePerson(target);
     }
 
     @Override
     public void addExpense(Expense expense) {
-        versionedAddressBook.addExpense(expense);
+        versionedEPiggy.addExpense(expense);
+        updateFilteredExpenseList(PREDICATE_SHOW_ALL_EXPENSES);
     }
 
     @Override
     public void setBudget(Budget budget) {
-        versionedAddressBook.setBudget(budget); }
+        versionedEPiggy.setBudget(budget); }
 
     @Override
     public SimpleObjectProperty<Budget> getBudget() {
-        return versionedAddressBook.getBudget(); }
+        return versionedEPiggy.getBudget(); }
 
     @Override
     public void setGoal(Goal goal) {
-        versionedAddressBook.setGoal(goal);
+        versionedEPiggy.setGoal(goal);
     }
 
     @Override
-    public void setPerson(Person target, Person editedPerson) {
-        requireAllNonNull(target, editedPerson);
+    public void setExpense(Expense target, Expense editedExpense) {
+        requireAllNonNull(target, editedExpense);
 
-        versionedAddressBook.setPerson(target, editedPerson);
+        versionedEPiggy.setPerson(target, editedExpense);
     }
 
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Filtered Expense List Accessors =============================================================
+
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
-     */
-    @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return filteredPersons;
-    }
-
-    /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
+     * Returns an unmodifiable view of the list of {@code Expense} backed by the internal list of
+     * {@code versionedEPiggy}
      */
     @Override
     public ObservableList<Expense> getFilteredExpenseList() {
-        return filteredExpenses;
+        return FXCollections.unmodifiableObservableList(filteredExpenses);
     }
 
     @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate) {
+    public void updateFilteredExpenseList(Predicate<Expense> predicate) {
         requireNonNull(predicate);
-        filteredPersons.setPredicate(predicate);
+        try {
+            requireParameters();
+        } catch (NoParametersException e) {
+            e.getMessage();
+        }
+        filteredExpenses.setPredicate(predicate);
     }
 
     //=========== Undo/Redo =================================================================================
 
     @Override
-    public boolean canUndoAddressBook() {
-        return versionedAddressBook.canUndo();
+    public boolean canUndoExpenseList() {
+        return versionedEPiggy.canUndo();
     }
 
     @Override
-    public boolean canRedoAddressBook() {
-        return versionedAddressBook.canRedo();
+    public boolean canRedoExpenseList() {
+        return versionedEPiggy.canRedo();
     }
 
     @Override
-    public void undoAddressBook() {
-        versionedAddressBook.undo();
+    public void undoExpenseList() {
+        versionedEPiggy.undo();
     }
 
     @Override
-    public void redoAddressBook() {
-        versionedAddressBook.redo();
+    public void redoExpenseList() {
+        versionedEPiggy.redo();
     }
 
     @Override
-    public void commitAddressBook() {
-        versionedAddressBook.commit();
+    public void commitExpenseList() {
+        versionedEPiggy.commit();
     }
 
-    //=========== Selected person ===========================================================================
+    //=========== Selected expense ===========================================================================
+
+//    public ReadOnlyProperty<Expense> selectedExpenseProperty() {
+//        return selectedExpense;
+//    }
 
     @Override
-    public ReadOnlyProperty<Person> selectedPersonProperty() {
-        return selectedPerson;
-    }
-
-    @Override
-    public ReadOnlyProperty<Expense> selectedExpenseProperty() {
+    public ReadOnlyProperty<seedu.address.model.epiggy.Expense> selectedExpenseProperty() {
         return selectedExpense;
     }
 
     @Override
-    public Person getSelectedPerson() {
-        return selectedPerson.getValue();
-    }
-
-    @Override
-    public void setSelectedPerson(Person person) {
-        if (person != null && !filteredPersons.contains(person)) {
-            throw new PersonNotFoundException();
-        }
-        selectedPerson.setValue(person);
+    public Expense getSelectedExpense() {
+        return selectedExpense.getValue();
     }
 
     @Override
     public void setSelectedExpense(Expense expense) {
         if (expense != null && !filteredExpenses.contains(expense)) {
-            throw new PersonNotFoundException(); //TODO
+            throw new ExpenseNotFoundException(); //TODO
         }
         selectedExpense.setValue(expense);
     }
 
-    /**
-     * Ensures {@code selectedPerson} is a valid person in {@code filteredPersons}.
-     */
-    private void ensureSelectedPersonIsValid(ListChangeListener.Change<? extends Person> change) {
-        while (change.next()) {
-            if (selectedPerson.getValue() == null) {
-                // null is always a valid selected person, so we do not need to check that it is valid anymore.
-                return;
-            }
-
-            boolean wasSelectedPersonReplaced = change.wasReplaced() && change.getAddedSize() == change.getRemovedSize()
-                    && change.getRemoved().contains(selectedPerson.getValue());
-            if (wasSelectedPersonReplaced) {
-                // Update selectedPerson to its new value.
-                int index = change.getRemoved().indexOf(selectedPerson.getValue());
-                selectedPerson.setValue(change.getAddedSubList().get(index));
-                continue;
-            }
-
-            boolean wasSelectedPersonRemoved = change.getRemoved().stream()
-                    .anyMatch(removedPerson -> selectedPerson.getValue().isSamePerson(removedPerson));
-            if (wasSelectedPersonRemoved) {
-                // Select the person that came before it in the list,
-                // or clear the selection if there is no such person.
-                selectedPerson.setValue(change.getFrom() > 0 ? change.getList().get(change.getFrom() - 1) : null);
-            }
+    @Override
+    public void find(ExpenseContainsKeywordsPredicate predicate) { //updateFilteredExpensesList
+        requireAllNonNull(predicate);
+        try {
+            requireParameters();
+        } catch (NoParametersException e) {
+            e.getMessage();
         }
+        filteredExpenses.setPredicate(predicate);
     }
+
+    /**
+     * Ensures {@code selectedExpense} is a valid expense in {@code filteredPersons}.
+     * TODO: change the code - ensure expense is valid
+     *       for example - date is valid, amount is greater than 0, etc.
+     */
+    private void ensureSelectedExpenseIsValid(ListChangeListener.Change<? extends Expense> change) {
+//        while (change.next()) {
+//            if (selectedExpense.getValue() == null) {
+//                // null is always a valid selected expense, so we do not need to check that it is valid anymore.
+//                return;
+//            }
+//
+//            boolean wasSelectedPersonReplaced = change.wasReplaced() && change.getAddedSize() == change.getRemovedSize()
+//                    && change.getRemoved().contains(selectedExpense.getValue());
+//            if (wasSelectedPersonReplaced) {
+//                // Update selectedExpense to its new value.
+//                int index = change.getRemoved().indexOf(selectedExpense.getValue());
+//                selectedExpense.setValue(change.getAddedSubList().get(index));
+//                continue;
+//            }
+//
+//            boolean wasSelectedPersonRemoved = change.getRemoved().stream()
+//                    .anyMatch(removedPerson -> selectedExpense.getValue().isSamePerson(removedPerson));
+//            if (wasSelectedPersonRemoved) {
+//                // Select the expense that came before it in the list,
+//                // or clear the selection if there is no such expense.
+//                selectedExpense.setValue(change.getFrom() > 0 ? change.getList().get(change.getFrom() - 1) : null);
+//            }
+//        }
+    }
+
 
     @Override
     public boolean equals(Object obj) {
@@ -274,10 +283,10 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return versionedAddressBook.equals(other.versionedAddressBook)
+        return versionedEPiggy.equals(other.versionedEPiggy)
                 && userPrefs.equals(other.userPrefs)
-                && filteredPersons.equals(other.filteredPersons)
-                && Objects.equals(selectedPerson.get(), other.selectedPerson.get());
+                && filteredExpenses.equals(other.filteredExpenses)
+                && Objects.equals(selectedExpense.get(), other.selectedExpense.get());
     }
 
 }

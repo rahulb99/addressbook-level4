@@ -13,13 +13,13 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Expense;
 
 //import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 //import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 
 /**
- * Adds a person to the address book.
+ * Adds a expense to the address book.
  */
 public class AddCommand extends Command {
     // TODO: Modify add command and pass all the JUnit test cases.
@@ -43,17 +43,17 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "Lunch";
 
     public static final String MESSAGE_SUCCESS = "New expense added: %1$s";
-    //    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
+    //    public static final String MESSAGE_DUPLICATE_PERSON = "This expense already exists in the address book";
     public static final String MESSAGE_DUPLICATE_EXPENSE = "This expense already exists int he address book";
 
-    private final Person toAdd;
+    private final Expense toAdd;
 
     /**
-     * Creates an AddCommand to add the specified {@code Person}
+     * Creates an AddCommand to add the specified {@code Expense}
      */
-    public AddCommand(Person person) {
-        requireNonNull(person);
-        toAdd = person;
+    public AddCommand(Expense expense) {
+        requireNonNull(expense);
+        toAdd = expense;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class AddCommand extends Command {
         }
 
         model.addPerson(toAdd);
-        model.commitAddressBook();
+        model.commitExpenseList();
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 

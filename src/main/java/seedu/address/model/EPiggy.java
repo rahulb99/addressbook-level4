@@ -12,23 +12,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.InvalidationListenerManager;
 import seedu.address.model.epiggy.Budget;
-import seedu.address.model.epiggy.Expense;
 import seedu.address.model.epiggy.Goal;
 import seedu.address.model.epiggy.item.Item;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.UniquePersonList;
+// import seedu.address.model.epiggy.Expense;
+import seedu.address.model.epiggy.ExpenseList;
 
 /**
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
-public class AddressBook implements ReadOnlyAddressBook {
+public class EPiggy implements ReadOnlyExpenseList {
 
-    private final ObservableList<Expense> expenses;
+    private final ExpenseList expenses;
     private final ObservableList<Item> items;
     private SimpleObjectProperty<Budget> budget;
     private SimpleObjectProperty<Goal> goal;
-    private final UniquePersonList persons;
     private final InvalidationListenerManager invalidationListenerManager = new InvalidationListenerManager();
 
     /*
@@ -39,20 +37,19 @@ public class AddressBook implements ReadOnlyAddressBook {
      *   among constructors.
      */
     {
-        expenses = FXCollections.observableArrayList();
+        expenses = new ExpenseList();
         items = FXCollections.observableArrayList();
         //TODO init budget
-        persons = new UniquePersonList();
         budget = new SimpleObjectProperty<>();
         goal = new SimpleObjectProperty<>();
     }
 
-    public AddressBook() {}
+    public EPiggy() {}
 
     /**
-     * Creates an AddressBook using the Persons in the {@code toBeCopied}
+     * Creates an EPiggy using the Persons in the {@code toBeCopied}
      */
-    public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    public EPiggy(ReadOnlyExpenseList toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -60,46 +57,37 @@ public class AddressBook implements ReadOnlyAddressBook {
     //// list overwrite operations
 
     /**
-     * Replaces the contents of the person list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
+     * Replaces the contents of the expense list with {@code expenses}.
+     * {@code expenses} must not contain duplicate expenses.
      */
-    public void setPersons(List<Person> persons) {
-        this.persons.setPersons(persons);
+    public void setExpenses(List<seedu.address.model.epiggy.Expense> expenses) {
+        this.expenses.setExpenses(expenses);
         indicateModified();
     }
 
+
     /**
-     * Resets the existing data of this {@code AddressBook} with {@code newData}.
+     * Resets the existing data of this {@code EPiggy} with {@code newData}.
      */
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyExpenseList newData) {
         requireNonNull(newData);
-
-        setPersons(newData.getPersonList());
+        this.setExpenses(newData.getExpenseList());
     }
 
-    //// person-level operations
+    //// expense-level operations
 
-    /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
-     */
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return persons.contains(person);
-    }
-
-    /**
-     * Adds a person to the address book.
-     * The person must not already exist in the address book.
-     */
-    public void addPerson(Person p) {
-        persons.add(p);
-        indicateModified();
-    }
+//    /**
+//     * Returns true if a expense with the same identity as {@code expense} exists in the address book.
+//     */
+//    public boolean hasPerson(seedu.address.model.epiggy.Expense expense) {
+//        requireNonNull(expense);
+//        return expenses.contains(expense);
+//    }
 
     /**
      * Adds an expense to the expense book.
      */
-    public void addExpense(Expense expense) {
+    public void addExpense(seedu.address.model.epiggy.Expense expense) {
         expenses.add(expense);
         indicateModified();
     }
@@ -128,23 +116,23 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Replaces the given person {@code target} in the list with {@code editedPerson}.
+     * Replaces the given expense {@code target} in the list with {@code editedExpense}.
      * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * The expense identity of {@code editedExpense} must not be the same as another existing expense in the address book.
      */
-    public void setPerson(Person target, Person editedPerson) {
-        requireNonNull(editedPerson);
+    public void setPerson(seedu.address.model.epiggy.Expense target, seedu.address.model.epiggy.Expense editedExpense) {
+        requireNonNull(editedExpense);
 
-        persons.setPerson(target, editedPerson);
+        expenses.setExpense(target, editedExpense);
         indicateModified();
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
+     * Removes {@code key} from this {@code EPiggy}.
      * {@code key} must exist in the address book.
      */
-    public void removePerson(Person key) {
-        persons.remove(key);
+    public void removePerson(seedu.address.model.epiggy.Expense key) {
+        expenses.remove(key);
         indicateModified();
     }
 
@@ -169,18 +157,14 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     @Override
     public String toString() {
-        return persons.asUnmodifiableObservableList().size() + " persons";
+        return expenses.asUnmodifiableObservableList().size() + " expenses";
         // TODO: refine later
     }
 
-    @Override
-    public ObservableList<Person> getPersonList() {
-        return persons.asUnmodifiableObservableList();
-    }
 
     @Override
-    public ObservableList<Expense> getExpenseList() {
-        return FXCollections.unmodifiableObservableList(expenses);
+    public ObservableList<seedu.address.model.epiggy.Expense> getExpenseList() {
+        return expenses.asUnmodifiableObservableList();
     }
 
     @Override
@@ -191,12 +175,12 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddressBook // instanceof handles nulls
-                && persons.equals(((AddressBook) other).persons));
+                || (other instanceof EPiggy // instanceof handles nulls
+                && expenses.equals(((EPiggy) other).expenses));
     }
 
     @Override
     public int hashCode() {
-        return persons.hashCode();
+        return expenses.hashCode();
     }
 }

@@ -12,7 +12,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.epiggy.Expense;
 
 /**
- * An UI component that displays information of a {@code Person}.
+ * An UI component that displays information of a {@code Expense}.
  */
 public class ExpenseCard extends UiPart<Region> {
 
@@ -27,7 +27,7 @@ public class ExpenseCard extends UiPart<Region> {
      * As a consequence, UI elements' variable names cannot be set to such keywords
      * or an exception will be thrown by JavaFX during runtime.
      *
-     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
+     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on EPiggy level 4</a>
      */
 
     public final Expense expense;
@@ -67,7 +67,7 @@ public class ExpenseCard extends UiPart<Region> {
     }
 
     /**
-     * Creates the tag labels for {@code person}.
+     * Creates the tag labels for {@code expense}.
      */
     private void initialiseTags(Expense expense) {
         expense.getItem().getTags().forEach(tag -> {

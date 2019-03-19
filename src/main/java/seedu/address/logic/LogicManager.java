@@ -14,9 +14,8 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.epiggy.Expense;
-import seedu.address.model.person.Person;
+import seedu.address.model.ReadOnlyExpenseList;
+//import seedu.address.model.epiggy.Expense;
 import seedu.address.storage.Storage;
 
 /**
@@ -39,7 +38,7 @@ public class LogicManager implements Logic {
         addressBookParser = new AddressBookParser();
 
         // Set addressBookModified to true whenever the models' address book is modified.
-        model.getAddressBook().addListener(observable -> addressBookModified = true);
+        model.getExpenseList().addListener(observable -> addressBookModified = true);
     }
 
     @Override
@@ -58,7 +57,7 @@ public class LogicManager implements Logic {
         if (addressBookModified) {
             logger.info("Address book modified, saving to file.");
             try {
-                storage.saveAddressBook(model.getAddressBook());
+                storage.saveAddressBook(model.getExpenseList());
             } catch (IOException ioe) {
                 throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
             }
@@ -68,17 +67,13 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return model.getAddressBook();
+    public ReadOnlyExpenseList getAddressBook() {
+        return model.getExpenseList();
     }
 
-    @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return model.getFilteredPersonList();
-    }
 
     @Override
-    public ObservableList<Expense> getFilteredExpenseList() {
+    public ObservableList<seedu.address.model.epiggy.Expense> getFilteredExpenseList() {
         return model.getFilteredExpenseList();
     }
 
@@ -102,23 +97,14 @@ public class LogicManager implements Logic {
         model.setGuiSettings(guiSettings);
     }
 
-    @Override
-    public ReadOnlyProperty<Person> selectedPersonProperty() {
-        return model.selectedPersonProperty();
-    }
 
     @Override
-    public void setSelectedPerson(Person person) {
-        model.setSelectedPerson(person);
-    }
-
-    @Override
-    public void setSelectedExpense(Expense expense) {
+    public void setSelectedExpense(seedu.address.model.epiggy.Expense expense) {
         model.setSelectedExpense(expense);
     }
 
     @Override
-    public ReadOnlyProperty<Expense> selectedExpenseProperty() {
+    public ReadOnlyProperty<seedu.address.model.epiggy.Expense> selectedExpenseProperty() {
         return model.selectedExpenseProperty();
     }
 }

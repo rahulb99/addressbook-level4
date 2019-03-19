@@ -5,19 +5,12 @@ import javafx.collections.ObservableList;
 //import seedu.address.model.epiggy.Budget;
 import seedu.address.model.epiggy.Expense;
 import seedu.address.model.epiggy.item.Item;
-import seedu.address.model.person.Person;
 
 
 /**
- * Unmodifiable view of an address book
+ * Unmodifiable view of expense list
  */
-public interface ReadOnlyAddressBook extends Observable {
-
-    /**
-     * Returns an unmodifiable view of the persons list.
-     * This list will not contain any duplicate persons.
-     */
-    ObservableList<Person> getPersonList();
+public interface ReadOnlyExpenseList extends Observable {
 
     /**
      * Returns an unmodifiable view of the expense list.

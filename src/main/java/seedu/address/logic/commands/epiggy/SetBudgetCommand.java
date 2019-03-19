@@ -30,13 +30,13 @@ public class SetBudgetCommand extends Command {
             + PREFIX_DATE + "04/02/2019";
 
     public static final String MESSAGE_SUCCESS = "Budget is set at: %1$s";
-    //    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
+    //    public static final String MESSAGE_DUPLICATE_PERSON = "This expense already exists in the address book";
     // public static final String MESSAGE_DUPLICATE_EXPENSE = "This expense already exists in the address book";
 
     private final Budget toSet;
 
     /**
-     * Creates an AddCommand to add the specified {@code Person}
+     * Creates an AddCommand to add the specified {@code Expense}
      */
     public SetBudgetCommand(Budget budget) {
         requireNonNull(budget);
@@ -48,7 +48,7 @@ public class SetBudgetCommand extends Command {
         requireNonNull(model);
 
         model.setBudget(toSet);
-        model.commitAddressBook();
+        model.commitExpenseList();
         return new CommandResult(String.format(MESSAGE_SUCCESS, toSet));
     }
 
