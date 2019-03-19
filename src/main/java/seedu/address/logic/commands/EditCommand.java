@@ -6,7 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -20,8 +20,7 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.*;
-import seedu.address.model.person.Expense;
+import seedu.address.model.epiggy.Expense;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -67,7 +66,7 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
-        List<Expense> lastShownList = model.getFilteredPersonList();
+        List<Expense> lastShownList = model.getFilteredExpenseList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
@@ -76,12 +75,12 @@ public class EditCommand extends Command {
         Expense expenseToEdit = lastShownList.get(index.getZeroBased());
         Expense editedExpense = createEditedPerson(expenseToEdit, editPersonDescriptor);
 
-        if (!expenseToEdit.isSamePerson(editedExpense) && model.hasPerson(editedExpense)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
-        }
+//        if (!expenseToEdit.isSamePerson(editedExpense) && model.hasPerson(editedExpense)) {
+//            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+//        }
 
         model.setExpense(expenseToEdit, editedExpense);
-        model.updateFilteredExpenseList(PREDICATE_SHOW_ALL_PERSONS);
+        model.updateFilteredExpenseList(Model.PREDICATE_SHOW_ALL_EXPENSES);
         model.commitExpenseList();
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedExpense));
     }
@@ -93,11 +92,11 @@ public class EditCommand extends Command {
     private static Expense createEditedPerson(Expense expenseToEdit, EditPersonDescriptor editPersonDescriptor) {
         assert expenseToEdit != null;
 
-        Name updatedName = editPersonDescriptor.getName().orElse(expenseToEdit.getName());
-        Phone updatedPhone = editPersonDescriptor.getPhone().orElse(expenseToEdit.getPhone());
-        Email updatedEmail = editPersonDescriptor.getEmail().orElse(expenseToEdit.getEmail());
-        Address updatedAddress = editPersonDescriptor.getAddress().orElse(expenseToEdit.getAddress());
-        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(expenseToEdit.getTags());
+//        Name updatedName = editPersonDescriptor.getName().orElse(expenseToEdit.getName());
+//        Phone updatedPhone = editPersonDescriptor.getPhone().orElse(expenseToEdit.getPhone());
+//        Email updatedEmail = editPersonDescriptor.getEmail().orElse(expenseToEdit.getEmail());
+//        Address updatedAddress = editPersonDescriptor.getAddress().orElse(expenseToEdit.getAddress());
+//        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(expenseToEdit.getTags());
 
         return new Expense(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
     }
@@ -125,11 +124,11 @@ public class EditCommand extends Command {
      * corresponding field value of the expense.
      */
     public static class EditPersonDescriptor {
-        private Name name;
-        private Phone phone;
-        private Email email;
-        private Address address;
-        private Set<Tag> tags;
+//        private Name name;
+//        private Phone phone;
+//        private Email email;
+//        private Address address;
+//        private Set<Tag> tags;
 
         public EditPersonDescriptor() {}
 
@@ -138,11 +137,11 @@ public class EditCommand extends Command {
          * A defensive copy of {@code tags} is used internally.
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
-            setName(toCopy.name);
-            setPhone(toCopy.phone);
-            setEmail(toCopy.email);
-            setAddress(toCopy.address);
-            setTags(toCopy.tags);
+//            setName(toCopy.name);
+//            setPhone(toCopy.phone);
+//            setEmail(toCopy.email);
+//            setAddress(toCopy.address);
+//            setTags(toCopy.tags);
         }
 
         /**

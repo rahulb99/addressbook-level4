@@ -1,7 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_EXPENSES;
 
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -26,7 +26,7 @@ public class UndoCommand extends Command {
         }
 
         model.undoExpenseList();
-        model.updateFilteredExpenseList(PREDICATE_SHOW_ALL_PERSONS);
+        model.updateFilteredExpenseList(PREDICATE_SHOW_ALL_EXPENSES);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
