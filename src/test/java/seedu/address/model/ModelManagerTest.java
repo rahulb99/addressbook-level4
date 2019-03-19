@@ -19,9 +19,9 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.person.Expense;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.person.exceptions.ExpenseNotFoundException;
 import seedu.address.testutil.AddressBookBuilder;
 import seedu.address.testutil.PersonBuilder;
 
@@ -35,8 +35,8 @@ public class ModelManagerTest {
     public void constructor() {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
-        assertEquals(new AddressBook(), new AddressBook(modelManager.getAddressBook()));
-        assertEquals(null, modelManager.getSelectedPerson());
+        assertEquals(new EPiggy(), new EPiggy(modelManager.getAddressBook()));
+        assertEquals(null, modelManager.getSelectedExpense());
     }
 
     @Test
@@ -105,9 +105,9 @@ public class ModelManagerTest {
     @Test
     public void deletePerson_personIsSelectedAndFirstPersonInFilteredPersonList_selectionCleared() {
         modelManager.addPerson(ALICE);
-        modelManager.setSelectedPerson(ALICE);
+        modelManager.setSelectedExpense(ALICE);
         modelManager.deletePerson(ALICE);
-        assertEquals(null, modelManager.getSelectedPerson());
+        assertEquals(null, modelManager.getSelectedExpense());
     }
 
     @Test
@@ -115,18 +115,18 @@ public class ModelManagerTest {
         modelManager.addPerson(ALICE);
         modelManager.addPerson(BOB);
         assertEquals(Arrays.asList(ALICE, BOB), modelManager.getFilteredPersonList());
-        modelManager.setSelectedPerson(BOB);
+        modelManager.setSelectedExpense(BOB);
         modelManager.deletePerson(BOB);
-        assertEquals(ALICE, modelManager.getSelectedPerson());
+        assertEquals(ALICE, modelManager.getSelectedExpense());
     }
 
     @Test
     public void setPerson_personIsSelected_selectedPersonUpdated() {
         modelManager.addPerson(ALICE);
-        modelManager.setSelectedPerson(ALICE);
-        Person updatedAlice = new PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
-        modelManager.setPerson(ALICE, updatedAlice);
-        assertEquals(updatedAlice, modelManager.getSelectedPerson());
+        modelManager.setSelectedExpense(ALICE);
+        Expense updatedAlice = new PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
+        modelManager.setExpense(ALICE, updatedAlice);
+        assertEquals(updatedAlice, modelManager.getSelectedExpense());
     }
 
     @Test
@@ -137,22 +137,22 @@ public class ModelManagerTest {
 
     @Test
     public void setSelectedPerson_personNotInFilteredPersonList_throwsPersonNotFoundException() {
-        thrown.expect(PersonNotFoundException.class);
-        modelManager.setSelectedPerson(ALICE);
+        thrown.expect(ExpenseNotFoundException.class);
+        modelManager.setSelectedExpense(ALICE);
     }
 
     @Test
     public void setSelectedPerson_personInFilteredPersonList_setsSelectedPerson() {
         modelManager.addPerson(ALICE);
         assertEquals(Collections.singletonList(ALICE), modelManager.getFilteredPersonList());
-        modelManager.setSelectedPerson(ALICE);
-        assertEquals(ALICE, modelManager.getSelectedPerson());
+        modelManager.setSelectedExpense(ALICE);
+        assertEquals(ALICE, modelManager.getSelectedExpense());
     }
 
     @Test
     public void equals() {
-        AddressBook addressBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
-        AddressBook differentAddressBook = new AddressBook();
+        EPiggy addressBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
+        EPiggy differentAddressBook = new EPiggy();
         UserPrefs userPrefs = new UserPrefs();
 
         // same values -> returns true

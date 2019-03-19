@@ -11,7 +11,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Expense;
 import seedu.address.testutil.PersonBuilder;
 
 /**
@@ -29,20 +29,20 @@ public class AddCommandIntegrationTest {
 
     @Test
     public void execute_newPerson_success() {
-        Person validPerson = new PersonBuilder().build();
+        Expense validExpense = new PersonBuilder().build();
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-        expectedModel.addPerson(validPerson);
-        expectedModel.commitAddressBook();
+        expectedModel.addPerson(validExpense);
+        expectedModel.commitExpenseList();
 
-        assertCommandSuccess(new AddCommand(validPerson), model, commandHistory,
-                String.format(AddCommand.MESSAGE_SUCCESS, validPerson), expectedModel);
+        assertCommandSuccess(new AddCommand(validExpense), model, commandHistory,
+                String.format(AddCommand.MESSAGE_SUCCESS, validExpense), expectedModel);
     }
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
-        Person personInList = model.getAddressBook().getPersonList().get(0);
-        assertCommandFailure(new AddCommand(personInList), model, commandHistory,
+        Expense expenseInList = model.getAddressBook().getPersonList().get(0);
+        assertCommandFailure(new AddCommand(expenseInList), model, commandHistory,
                 AddCommand.MESSAGE_DUPLICATE_EXPENSE);
     }
 

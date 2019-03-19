@@ -23,9 +23,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.epiggy.Budget;
-import seedu.address.model.epiggy.Expense;
 import seedu.address.model.epiggy.item.Item;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Expense;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.testutil.PersonBuilder;
 
@@ -34,7 +33,7 @@ public class AddressBookTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    private final AddressBook addressBook = new AddressBook();
+    private final EPiggy addressBook = new EPiggy();
 
     @Test
     public void constructor() {
@@ -49,18 +48,18 @@ public class AddressBookTest {
 
     @Test
     public void resetData_withValidReadOnlyAddressBook_replacesData() {
-        AddressBook newData = getTypicalAddressBook();
+        EPiggy newData = getTypicalAddressBook();
         addressBook.resetData(newData);
         assertEquals(newData, addressBook);
     }
 
     @Test
     public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
-        // Two persons with the same identity fields
-        Person editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        // Two expenses with the same identity fields
+        Expense editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
-        List<Person> newPersons = Arrays.asList(ALICE, editedAlice);
-        AddressBookStub newData = new AddressBookStub(newPersons);
+        List<Expense> newExpenses = Arrays.asList(ALICE, editedAlice);
+        ExpenseListStub newData = new ExpenseListStub(newExpenses);
 
         thrown.expect(DuplicatePersonException.class);
         addressBook.resetData(newData);
@@ -86,7 +85,7 @@ public class AddressBookTest {
     @Test
     public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
         addressBook.addPerson(ALICE);
-        Person editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        Expense editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
         assertTrue(addressBook.hasPerson(editedAlice));
     }
@@ -117,20 +116,20 @@ public class AddressBookTest {
     }
 
     /**
-     * A stub ReadOnlyAddressBook whose persons list can violate interface constraints.
+     * A stub ReadOnlyExpenseList whose expenses list can violate interface constraints.
      */
-    private static class AddressBookStub implements ReadOnlyAddressBook {
-        private final ObservableList<Person> persons = FXCollections.observableArrayList();
+    private static class ExpenseListStub implements ReadOnlyExpenseList {
         private final ObservableList<Expense> expenses = FXCollections.observableArrayList();
+        private final ObservableList<seedu.address.model.epiggy.Expense> expenses = FXCollections.observableArrayList();
         private final ObservableList<Item> items = FXCollections.observableArrayList();
         private ObservableValue<Budget> budget; //TODO
 
-        AddressBookStub(Collection<Person> persons) {
-            this.persons.setAll(persons);
+        ExpenseListStub(Collection<Expense> expenses) {
+            this.expenses.setAll(expenses);
         }
 
         @Override
-        public ObservableList<Expense> getExpenseList() {
+        public ObservableList<seedu.address.model.epiggy.Expense> getExpenseList() {
             return FXCollections.unmodifiableObservableList(expenses);
         }
 
@@ -145,8 +144,8 @@ public class AddressBookTest {
         // }
 
         @Override
-        public ObservableList<Person> getPersonList() {
-            return persons;
+        public ObservableList<Expense> getPersonList() {
+            return expenses;
         }
 
         @Override

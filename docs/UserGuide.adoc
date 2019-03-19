@@ -97,7 +97,7 @@ Format: `list`
 Edits an existing expense of a specific user at a specific `*INDEX`* . +
 The *`INDEX`* refers to the number in the displayed Expenses List which is next to the name of the expense. Existing values of
 the expense will be changed according to the value of the parameters.
-Edits an existing person in the address book. +
+Edits an existing expense in the address book. +
 Format: `edit INDEX [n/EXPENSE_NAME] [$/COST] [c/CATEGORY] [d/DATE] [t/TAG]…`
 
 Examples:
@@ -175,7 +175,7 @@ descending, respectively. Unless otherwise explicitly mentioned, then it will be
 === Set spending budget : `setBudget`
 
 Sets a total spending budget for a certain time period. The time period will be in terms of days, and 1 day is the minimum
-a person can set a budget for. +
+a expense can set a budget for. +
 The setBudget command is case sensitive. +
 Format: `setBudget [$/MONEY_WITH_TWO_DECIMAL_PLACES] [t/TIME_PERIOD_IN_DAYS]`
 
