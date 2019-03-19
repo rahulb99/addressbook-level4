@@ -313,6 +313,25 @@ image::UndoRedoActivityDiagram.png[width="650"]
 ** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things.
 // end::undoredo[]
 
+// tag::find[]
+=== Find feature
+==== Current Implementation
+There is a `FindCommand` class which implements this feature.
+===== Working
+Step 1: `FindCommand` 's execute method passes the predicate (which is basically input arguments) of type `ExpenseContainsKeywordsPredicate` to `Model` 's `find` method.
+Step 2: `ModelManager` which implements the `Model` interface, provides the implementation for the `find` method.
+Step 3: We then filter the expenses by setting the predicate and `ExpenseContainsKeywordsPredicate` then performs the underlying work - finds all the expenses according to input arguments.
+Step 4: We finally list out the filtered expenses.
+
+
+===== Aspect: Data structure to support the find command
+//TODO
+
+
+
+
+//end::find[]
+
 // tag::dataencryption[]
 === [Proposed] Data Encryption
 
