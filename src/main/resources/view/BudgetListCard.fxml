@@ -1,51 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.*?>
 
-<HBox fx:id="cardPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
-  <GridPane HBox.hgrow="ALWAYS">
-    <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-    </columnConstraints>
-    <VBox alignment="CENTER_LEFT" minHeight="105.0" prefHeight="180.0" prefWidth="150.0" GridPane.columnIndex="0">
-      <HBox alignment="CENTER_LEFT" spacing="5.0" />
-      <Label fx:id="budgetTitle" styleClass="cell_big_label" text="\$">
-        <minWidth>
-          <!-- Ensures that the label text is never truncated -->
-          <Double fx:value="-Infinity" />
-        </minWidth>
-      </Label>
-      <Label fx:id="budgetedAmount" styleClass="cell_small_label" text="\$budgetedAmount" textFill="#9f9f9f" />
-      <Label fx:id="startDate" styleClass="cell_small_label" text="\$startDate">
-        <textFill>
-          <Color blue="0.625" green="0.625" red="0.625" fx:id="x1" />
-        </textFill>
-      </Label>
-      <padding>
-        <Insets bottom="5.0" left="15.0" right="5.0" top="5.0" />
-      </padding>
-      <Label fx:id="endDate" styleClass="cell_small_label" text="\$endDate" textFill="$x1" />
-      <Label fx:id="period" styleClass="cell_small_label" text="\$period" textFill="$x1" />
-      <Label fx:id="currentStatus" styleClass="cell_big_label">
-        <minWidth>
-          <!-- Ensures that the label text is never truncated -->
-          <Double fx:value="-Infinity" />
-        </minWidth>
-      </Label>
-      <Label fx:id="remainingAmount" styleClass="cell_small_label" text="\$remainingAmount" />
-      <Label fx:id="remainingDays" styleClass="cell_small_label" text="\$remainingDays" />
-    </VBox>
-  </GridPane>
+<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <GridPane HBox.hgrow="ALWAYS">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
+        </columnConstraints>
+        <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0">
+            <padding>
+                <Insets top="5" right="5" bottom="5" left="15" />
+            </padding>
+            <HBox spacing="5" alignment="CENTER_LEFT">
+                <Label fx:id="id" styleClass="cell_big_label">
+                    <minWidth>
+                        <!-- Ensures that the label text is never truncated -->
+                        <Region fx:constant="USE_PREF_SIZE" />
+                    </minWidth>
+                </Label>
+                <Label fx:id="remainingAmount" text="\$first" styleClass="cell_big_label" />
+            </HBox>
+            <FlowPane fx:id="tags" />
+            <Label fx:id="date" styleClass="cell_small_label" text="\$date" />
+            <Label fx:id="remainingDays" styleClass="cell_small_label" text="\$remainingDays" />
+        </VBox>
+    </GridPane>
 </HBox>

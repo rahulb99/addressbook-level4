@@ -116,59 +116,6 @@ public class Date {
     }
 
     /**
-     * Checks if the dateToCompare is a later date.
-     * @param dateToCompare the date to be compared.
-     * @return True if the dateToCompare is after this.date.
-     */
-    public boolean isAfter(Date dateToCompare) {
-        if (this.getYear() > dateToCompare.getYear()) {
-            return true;
-        } else if (this.getYear() < dateToCompare.getYear()) {
-            return false;
-        } else if (this.getMonth() > dateToCompare.getMonth()) {
-            return true;
-        } else if (this.getMonth() < dateToCompare.getMonth()) {
-            return false;
-        } else if (this.getDay() > dateToCompare.getDay()) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Calculates the number of days between two dates
-     * @param d the date to be compared.
-     * @return Period of days between the two dates.
-     */
-    public Period timePeriodBetween (Date d) {
-        return new Period(Math.abs(calculateDaysFromDate(d) - calculateDaysFromDate(this)));
-    }
-
-    /**
-     * Calculates the number of days of the date from 1600.
-     * @param d the date to converted to number of days.
-     * @return Number of days of the date.
-     */
-    private int calculateDaysFromDate(Date d) {
-        int resultantDays = d.getDay();
-        int year = d.getYear();
-        int month = d.getMonth();
-        while (month > 0) {
-            resultantDays += getNoOfDaysInMonth(month, year);
-            month--;
-        }
-        while (year - 1600 > 0) {
-            if (isLeap(year)) {
-                resultantDays += 366;
-            } else {
-                resultantDays += 365;
-            }
-            year--;
-        }
-        return resultantDays;
-    }
-
-    /**
      * Getter for day
      * @return day
      */
@@ -198,34 +145,6 @@ public class Date {
      */
     public static boolean isValidDate(String test) {
         return test.matches(VALIDATION_REGEX);
-    }
-
-    /**
-     * Comparator
-     * @return TODO fill in
-     */
-    public int compareTo(Date d) {
-        if (this.isAfter(d)) {
-            return 1;
-        } else if (this.equals(d)) {
-            return 0;
-        }
-        return -1;
-    }
-    /**
-     * Check if the dates are equal
-     * @return true if the dates are equal
-     */
-    public boolean equals(Date d) {
-        if (d == this) {
-            return true;
-        }
-        if (!(d instanceof Date)) {
-            return false;
-        }
-        Date date = (Date) d;
-        return (date.getDay() == this.getDay() && date.getMonth() == this.getMonth()
-                && date.getYear() == this.getYear());
     }
 
     @Override

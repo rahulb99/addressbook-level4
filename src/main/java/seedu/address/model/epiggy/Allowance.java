@@ -10,6 +10,7 @@ import seedu.address.model.epiggy.item.Item;
  */
 public class Allowance extends Expense {
     public Allowance(Item item, Date date) {
+
         super(item, date);
     }
 

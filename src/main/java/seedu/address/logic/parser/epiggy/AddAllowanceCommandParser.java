@@ -35,7 +35,7 @@ public class AddAllowanceCommandParser implements Parser<AddAllowanceCommand> {
 
         Name name = new Name("Allowance");
         Price cost = ParserUtil.parseCost(argMultimap.getValue(PREFIX_COST).get());
-        Date date = new Date(); //TODO dummy code right now
+        Date date = new Date(); //TODO
         Set<Tag> tagList = Set.of(new Tag("Allowance"));
 
         Item item = new Item(name, cost, tagList);

@@ -41,8 +41,6 @@ public interface Logic {
     ObservableList<Expense> getFilteredExpenseList();
 
     SimpleObjectProperty<Budget> getBudget();
-
-    ObservableList<Budget> getBudgetList();
     /**
      * Returns an unmodifiable view of the list of commands entered by the user.
      * The list is ordered from the least recent command to the most recent command.
@@ -86,20 +84,6 @@ public interface Logic {
      * @see seedu.address.model.Model#setSelectedPerson(Person)
      */
     void setSelectedPerson(Person person);
-
-    /**
-     * Sets the budget.
-     *
-     * @see seedu.address.model.Model#setBudget(Budget)
-     */
-    void setBudget(Budget budget);
-
-    /**
-     * Adds a new budget.
-     *
-     * @see seedu.address.model.Model#addBudget(Budget)
-     */
-    void addBudget(Budget budget);
 
     /**
      * Sets the selected expense in the filtered person list.

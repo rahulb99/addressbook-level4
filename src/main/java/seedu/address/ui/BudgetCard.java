@@ -20,37 +20,27 @@ public class BudgetCard extends UiPart<Region> {
 
     public final Budget budget;
 
-    @FXML
+    @javafx.fxml.FXML
     private HBox cardPane;
-    @FXML
-    private Label budgetTitle;
     @FXML
     private Label budgetedAmount;
     @FXML
-    private Label startDate;
-    @FXML
-    private Label endDate;
-    @FXML
-    private Label period;
-    @FXML
-    private Label currentStatus;
-    @FXML
     private Label remainingAmount;
+    @FXML
+    private Label date;
     @FXML
     private Label remainingDays;
 
     public BudgetCard(Budget budget) {
         super(FXML);
+
         this.budget = budget;
-        System.out.println(budget);
-        budgetTitle.setText(budget.getStatus() + " Budget");
-        budgetedAmount.setText("Amount: $" + budget.getPrice().toString());
-        startDate.setText("Start Date: " + budget.getStartDate().toString());
-        endDate.setText("End Date: " + budget.getEndDate().toString());
-        period.setText("Period of Budget: " + budget.getPeriod().toString() + " days");
-        currentStatus.setText("Status");
-        remainingAmount.setText("Amount remaining: $" + budget.getRemainingAmount().toString());
-        remainingDays.setText("Days remaining: " + budget.getRemainingDays().toString() + " days");
+        budgetedAmount.setText(String.format("Budgeted Amount: $%d", budget.getPrice().getAmount()));
+        remainingAmount.setText(String.format("Remaining Amount: $%d", budget.getRemainingAmount().getAmount()));
+        date.setText(String.format("Budget set from " + budget.getStartDate().toString()
+                + " to " + budget.getEndDate().toString()));
+        remainingDays.setText(budget.getPeriod().toString());
+        // initialiseTags(budget);
     }
 
     //    /**

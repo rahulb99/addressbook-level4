@@ -2,6 +2,7 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Scene?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -9,8 +10,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.Scene?>
-<?import javafx.stage.Stage?>
+
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
          title="ePiggy" minWidth="750" minHeight="600" onCloseRequest="#handleExit">
     <icons>
@@ -29,22 +29,10 @@
                         <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit"/>
                     </Menu>
                     <Menu mnemonicParsing="false" text="Help">
-                        <MenuItem fx:id="helpMenuItem" mnemonicParsing="false"
-                                  onAction="#handleHelp" text="Help"/>
+                        <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help"/>
                     </Menu>
                     <Menu mnemonicParsing="false" text="Report">
-                        <MenuItem fx:id="summaryMenuItem_daily" mnemonicParsing="false"
-                                  onAction="#handleDailyReport"
-                                  text="Daily Report"/>
-                        <MenuItem fx:id="summaryMenuItem_monthly" mnemonicParsing="false"
-                                  onAction="#handleMonthlyReport"
-                                  text="Monthly Report"/>
-                        <MenuItem fx:id="summaryMenuItem_yearly" mnemonicParsing="false"
-                                  onAction="#handleYearlyReport"
-                                  text="Yearly Report"/>
-                        <MenuItem fx:id="summaryMenuItem_percentage" mnemonicParsing="false"
-                                  onAction="#handlePercentageReport"
-                                  text="Percentage Report"/>
+                        <MenuItem fx:id="summaryMenuItem" mnemonicParsing="false" onAction="#handleReport" text="Report"/>
                     </Menu>
                 </MenuBar>
 

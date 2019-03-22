@@ -186,55 +186,29 @@ descending, respectively. Unless otherwise explicitly mentioned, then it will be
 
 Sets a total spending budget for a certain time period. The time period will be in terms of days, and 1 day is the minimum
 a person can set a budget for. +
-This command can only be used if there are no budgets set. The setBudget command is case sensitive. +
-Format: `setBudget [$/MONEY] [t/TIME_PERIOD_IN_DAYS]`
+The setBudget command is case sensitive. +
+Format: `setBudget [$/MONEY_WITH_TWO_DECIMAL_PLACES] [t/TIME_PERIOD_IN_DAYS]`
 
 Examples:
 
-* `setBudget $/500.00 t/7 d/03/02/2019` +
-Sets a total budget of $500.00 for each week starting from 03/02/2019.
+* `setBudget $500.00 t/7` +
+Sets a total budget of $500.00 for each week.
 
-* `setBudget $/10000.00 t/15 d/01/01/2000` +
-Sets a total budget of $10000.00 every 15 days starting from 01/01/2000.
+* `setBudget $10000.00 t/15` +
+Sets a total budget of $10000.00 every 15 days.
 
 ****
 *Additional Information:* +
-*`MONEY`* must be a positive number. +
+*`MONEY_WITH_TWO_DECIMAL_PLACES`* must be a positive number with two decimal places. +
 *`TIME_PERIOD_IN_DAYS`* must be a positive whole number.
 ****
 
 *Display status of budget.* +
-The Expense Tracker will show the status of the current budget whenever a new expense is added. It will display the following information: +
-* Status of Budget (Old/Current) +
-* Budgeted Amount($) +
-* Start Date of Budget (date) +
-* End Date of Budget (date) +
-* Period of Budget (days) +
-* Remaining Amount for Budget ($) +
-* Remaining Days before Budget resets (Days) +
+The Expense Tracker will show the status of the budget whenever a new expense is added.
 
 image::BudgetUi.png[width="760"]
 _Figure 3: Shows budget status_
 
-=== Edit spending budget : `editBudget`
-
-Edits the current budget. +
-The editBudget command is case sensitive. +
-Format: `editBudget [$/MONEY_WITH_TWO_DECIMAL_PLACES] [t/TIME_PERIOD_IN_DAYS]`
-
-Examples:
-
-* `editBudget $/1000 t/7 d/01/01/2000` +
-Edits the current budget to $1000 for each week starting from 01/01/2000.
-
-* `editBudget $/200 t/15 d/31/12/2018` +
-Edits the current budget to $200 for every 15 days starting from 31/12/2018.
-
-****
-*Additional Information:* +
-*`MONEY`* must be a positive number. +
-*`TIME_PERIOD_IN_DAYS`* must be a positive whole number.
-****
 
 === Recommend future spendings : `recommend`
 
@@ -258,24 +232,12 @@ The expenses list should have at least one day’s worth of expenses.
 
 Generates a report of the given date, month, or year. The report consists of total inflow, total outflow, and proportion of income
 spent on different categories. +
-Format: `report [t/daily] [t/monthly] [t/yearly] [t/percentage]`
+Format: `report`
 
 Examples:
 
 * `report` +
-View the spending records for this year.
-
-* `report t/daily` +
-View the spending records for this month.
-
-* `report t/monthly` +
-View the spending records for current month.
-
-* `report t/yearly` +
-View the spending records for past few years.
-
-* `report t/percentage` +
-View the spending records percentage of this year.
+View the spending records for current year.
 
 ****
 *Additional Information:* +

@@ -93,19 +93,9 @@ public interface Model {
     void setBudget(Budget budget);
 
     /**
-     * Adds a new budget.
-     */
-    void addBudget(Budget budget);
-
-    /**
      * Gets the current budget.
      */
     SimpleObjectProperty<Budget> getBudget();
-
-    /**
-     * Gets the current budget list.
-     */
-    ObservableList<Budget> getBudgetList();
 
     /**
      * Get the current savings.
@@ -121,11 +111,6 @@ public interface Model {
      * Sets the savings goal.
      */
     void setGoal(Goal goal);
-
-    /**
-     * Checks if a budget already exists in AddressBook.
-     */
-    boolean hasBudget();
 
     /**
      * Replaces the given person {@code target} with {@code editedPerson}.
