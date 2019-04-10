@@ -2,6 +2,7 @@ package seedu.address.logic.parser.epiggy;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.ParserUtil.validateKeywords;
 
 import seedu.address.logic.commands.epiggy.FindExpenseCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
@@ -45,6 +46,8 @@ public class FindExpenseCommandParser implements Parser<FindExpenseCommand> {
         ArgumentMultimap keywordsMap =
                 ArgumentTokenizer.tokenize(args, CliSyntax.PREFIX_NAME, CliSyntax.PREFIX_COST,
                         CliSyntax.PREFIX_TAG, CliSyntax.PREFIX_DATE);
+
+        validateKeywords(keywordsMap);
 
         ExpenseContainsKeywordsPredicate predicate = new ExpenseContainsKeywordsPredicate(keywordsMap);
         return new FindExpenseCommand(predicate);

@@ -1,12 +1,18 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COST;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
@@ -119,5 +125,131 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Keywords validation.
+     * @param keywordsMap user input to keyword mapping.
+     * @throws ParseException
+     */
+    public static void validateKeywords(ArgumentMultimap keywordsMap) throws ParseException {
+        List<String> nameKeywords = keywordsMap.getAllValues(PREFIX_NAME);
+        List<String> tagKeywords = keywordsMap.getAllValues(PREFIX_TAG);
+        List<String> dateKeywords = keywordsMap.getAllValues(PREFIX_DATE);
+        List<String> costKeywords = keywordsMap.getAllValues(PREFIX_COST);
+
+        validateNameKeywords(nameKeywords);
+        validateTagKeywords(tagKeywords);
+        validateDateKeywords(dateKeywords);
+        validateCostKeywords(costKeywords);
+    }
+
+    /**
+     * Name keyword validation.
+     * @throws ParseException if name keyword is invalid (not alphanumeric).
+     */
+    private static void validateNameKeywords(List<String> nameKeywords) throws ParseException {
+        for (String name: nameKeywords) {
+            if (!Name.isValidName(name)) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, Name.MESSAGE_CONSTRAINTS));
+            }
+        }
+    }
+
+    /**
+     * Tag keyword validation.
+     * @throws ParseException if tag keyword is invalid (not alphanumeric).
+     */
+    private static void validateTagKeywords(List<String> tagKeywords) throws ParseException {
+        for (String tag: tagKeywords) {
+            if (!Tag.isValidTagName(tag)) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, Tag.MESSAGE_CONSTRAINTS));
+            }
+        }
+    }
+
+    /**
+     * Name keyword validation.
+     * @throws ParseException if name keyword is invalid (not alphanumeric).
+     */
+    private static void validateDateKeywords(List<String> dateKeywords) throws ParseException {
+        for (String d: dateKeywords) {
+            String d1 = d.split(":")[0];
+            String d2 = d.split(":").length == 2 ? d.split(":")[1] : "";
+
+            //If the user enters one date keyword and it is invalid
+            if (d2.equals("") && !isValidDate(d1)) {
+                throw new ParseException("Invalid Date");
+            }
+
+            //If the user enters a range of date keywords and any of the two dates is invalid
+            if (!d2.equals("") && (!isValidDate(d1) || !isValidDate(d2))) {
+                throw new ParseException("Invalid Date");
+            }
+
+            //If the ending date is earlier than the starting date
+            if (!d2.equals("")) {
+                Date date1 = new Date(d1);
+                Date date2 = new Date(d2);
+                if (date1.after(date2)) {
+                    throw new ParseException("Invalid Date");
+                }
+            }
+
+            //If the user enters more than one colon
+            if (d.split(":").length > 2) {
+                throw new ParseException("Invalid Date");
+            }
+        }
+    }
+
+    /**
+     * Date validation.
+     * @param date input date
+     * @return true if date is valid, false otherwise.
+     * @throws ParseException if date is valid.
+     */
+    private static boolean isValidDate(String date) throws ParseException {
+        SimpleDateFormat sdfrmt = new SimpleDateFormat("dd/MM/yyyy");
+        sdfrmt.setLenient(false);
+        try {
+            Date d = sdfrmt.parse(date);
+        } catch (java.text.ParseException e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Name keyword validation.
+     * @throws ParseException if name keyword is invalid (not alphanumeric).
+     */
+    private static void validateCostKeywords(List<String> costKeywords) throws ParseException {
+        for (String cost: costKeywords) {
+            String c1 = cost.split(":")[0];
+            String c2 = cost.split(":").length == 2 ? cost.split(":")[1] : "";
+
+            //If the user enters one cost keyword and it is invalid
+            if (c2.equals("") && !Cost.isValidCost(c1)) {
+                throw new ParseException(Cost.MESSAGE_CONSTRAINTS);
+            }
+
+            //If the user enters a range of cost keywords and any of the two cost is invalid
+            if (!c2.equals("") && (!Cost.isValidCost(c1) || !Cost.isValidCost(c2))) {
+                throw new ParseException(Cost.MESSAGE_CONSTRAINTS);
+            }
+
+            //If cost2 is lesser than cost1
+            if (!c2.equals("")) {
+                if (Float.parseFloat(c1) > Float.parseFloat(c2)) {
+                    throw new ParseException(Cost.MESSAGE_CONSTRAINTS);
+                }
+            }
+
+            //If the user enters more than one colon
+            if (cost.split(":").length > 2) {
+                throw new ParseException( Cost.MESSAGE_CONSTRAINTS);
+            }
+        }
     }
 }

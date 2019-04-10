@@ -56,7 +56,7 @@ public class FindExpenseCommandTest {
 
         // same values -> returns true
         FindExpenseCommand findFirstCommandCopy = new FindExpenseCommand(firstPredicate);
-        // assertTrue(findFirstCommand.equals(findFirstCommandCopy));
+        assertTrue(findFirstCommand.equals(findFirstCommandCopy));
 
         // different types -> returns false
         assertFalse(findFirstCommand.equals(1));

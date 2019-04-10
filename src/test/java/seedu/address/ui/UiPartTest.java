@@ -5,7 +5,6 @@ import static org.junit.Assert.assertNotNull;
 
 import java.net.URL;
 
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -56,11 +55,10 @@ public class UiPartTest {
     }
 
     @Test
-    @Ignore
     public void constructor_validFileWithFxRootUrl_loadsFile() {
         URL validFileUrl = getTestFileUrl(VALID_FILE_WITH_FX_ROOT_PATH);
         TestFxmlObject root = new TestFxmlObject();
-        assertEquals(VALID_FILE_ROOT, new TestUiPart<TestFxmlObject>(validFileUrl, root).getRoot());
+        assertEquals(VALID_FILE_ROOT, new TestUiPart<>(validFileUrl, root).getRoot());
     }
 
     @Test

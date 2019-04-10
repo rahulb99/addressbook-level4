@@ -3,6 +3,8 @@ package seedu.address.logic.commands.epiggy;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_EXPENSES_LISTED_OVERVIEW;
 
+import java.util.Objects;
+
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -43,10 +45,15 @@ public class FindExpenseCommand extends Command {
     }
 
     @Override
-    public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof FindExpenseCommand // instanceof handles nulls
-                && predicate.equals(((FindExpenseCommand) other).predicate)); // state check
+    public boolean equals(Object o) {
+        if (this == o) { return true; }
+        if (o == null || getClass() != o.getClass()) { return false; }
+        FindExpenseCommand that = (FindExpenseCommand) o;
+        return Objects.equals(predicate, that.predicate);
     }
 
+    @Override
+    public String toString() {
+        return "FindExpenseCommand{" + "predicate=" + predicate + '}';
+    }
 }

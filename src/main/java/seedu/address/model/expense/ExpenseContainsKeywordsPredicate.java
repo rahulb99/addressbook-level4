@@ -12,7 +12,6 @@ import seedu.address.model.expense.item.Item;
 
 //@@author rahulb99
 /**
- * TODO: Refactor
  * Tests that a {@code expense}'s {@code Name, Cost, Category, Date} matches any of the keywords given.
  */
 public class ExpenseContainsKeywordsPredicate implements Predicate<Expense> {
@@ -106,16 +105,16 @@ public class ExpenseContainsKeywordsPredicate implements Predicate<Expense> {
      * */
     public boolean isWithinCostRange(String costKeywords, Expense expense) {
         assert costKeywords != null : "costKeywords should not be null.\n";
-        boolean result;
+        boolean result = true;
         String[] splitCost = costKeywords.split(":");
         Item item = expense.getItem();
         if (splitCost.length == 1) { //if the user enters an exact cost
             double chosenCost = Double.parseDouble(splitCost[0]);
-            result = item.getCost().getAmount() == chosenCost;
+            result = result && item.getCost().getAmount() == chosenCost;
         } else { //if the user enters a range of dates
             double lowerBound = Double.parseDouble(splitCost[0]);
             double higherBound = Double.parseDouble(splitCost[1]);
-            result = lowerBound <= item.getCost().getAmount()
+            result = result && lowerBound <= item.getCost().getAmount()
                     && item.getCost().getAmount() <= higherBound;
         }
         return result;
@@ -126,7 +125,7 @@ public class ExpenseContainsKeywordsPredicate implements Predicate<Expense> {
      * */
     public boolean isWithinDateRange(String dateKeywords, Expense expense) throws ParseException {
         assert dateKeywords != null : "dateKeywords should not be null.\n";
-        boolean result;
+        boolean result = true;
         String[] splitDate = dateKeywords.split(":");
         if (splitDate.length == 1) { //if the user only enter an exact date
             Calendar cal = Calendar.getInstance();
@@ -136,7 +135,7 @@ public class ExpenseContainsKeywordsPredicate implements Predicate<Expense> {
             // SimpleDateFormat sdf1 = new SimpleDateFormat("EEE, MMM d, yyyy");
             // expenseCal.setTime(sdf1.parse(expense.getDate().toString()));
             expenseCal.setTime(expense.getDate());
-            result = cal.get(Calendar.YEAR) == expenseCal.get(Calendar.YEAR)
+            result = result && cal.get(Calendar.YEAR) == expenseCal.get(Calendar.YEAR)
                     && cal.get(Calendar.MONTH) == expenseCal.get(Calendar.MONTH)
                     && cal.get(Calendar.DATE) == expenseCal.get(Calendar.DATE);
         } else { //if the user enter a range of dates
@@ -149,9 +148,13 @@ public class ExpenseContainsKeywordsPredicate implements Predicate<Expense> {
             expenseCal.setTime(expense.getDate());
             boolean isWithinRange = start.before(expenseCal)
                     && end.after(expenseCal);
-            result = start.equals(expenseCal)
-                    || end.equals(expenseCal)
-                    || isWithinRange;
+            boolean equalOrNot = (start.get(Calendar.YEAR) == expenseCal.get(Calendar.YEAR)
+                    && start.get(Calendar.MONTH) == expenseCal.get(Calendar.MONTH)
+                    && start.get(Calendar.DATE) == expenseCal.get(Calendar.DATE))
+                    || (end.get(Calendar.YEAR) == expenseCal.get(Calendar.YEAR)
+                    && end.get(Calendar.MONTH) == expenseCal.get(Calendar.MONTH)
+                    && end.get(Calendar.DATE) == expenseCal.get(Calendar.DATE));
+            result = result && (equalOrNot || isWithinRange);
         }
         return result;
     }
@@ -191,4 +194,8 @@ public class ExpenseContainsKeywordsPredicate implements Predicate<Expense> {
                 && keywords.equals(((ExpenseContainsKeywordsPredicate) other).keywords)); // state check
     }
 
+    @Override
+    public String toString() {
+        return "ExpenseContainsKeywordsPredicate{" + "keywords=" + keywords + '}';
+    }
 }
