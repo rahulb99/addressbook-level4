@@ -10,7 +10,6 @@ import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ReadOnlyEPiggy;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
-import seedu.address.storage.epiggy.EPiggyStorage;
 
 /**
  * Manages storage of EPiggy data in local storage.
@@ -18,7 +17,7 @@ import seedu.address.storage.epiggy.EPiggyStorage;
 public class StorageManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
-    private seedu.address.storage.epiggy.EPiggyStorage ePiggyStorage;
+    private EPiggyStorage ePiggyStorage;
     private UserPrefsStorage userPrefsStorage;
 
 

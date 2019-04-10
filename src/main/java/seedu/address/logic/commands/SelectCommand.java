@@ -39,7 +39,7 @@ public class SelectCommand extends Command {
         List<Expense> filteredExpenseList = model.getFilteredExpenseList();
 
         if (targetIndex.getZeroBased() >= filteredExpenseList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_EXPENSE_DISPLAYED_INDEX);
         }
 
         model.setSelectedExpense(filteredExpenseList.get(targetIndex.getZeroBased()));

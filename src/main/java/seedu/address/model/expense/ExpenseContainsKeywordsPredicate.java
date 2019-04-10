@@ -3,7 +3,6 @@ package seedu.address.model.expense;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -18,6 +17,7 @@ import seedu.address.model.expense.item.Item;
  */
 public class ExpenseContainsKeywordsPredicate implements Predicate<Expense> {
 
+    public static final int LEVENSHTIEN_THRESHOLD = 5;
     private final ArgumentMultimap keywords;
 
     public ExpenseContainsKeywordsPredicate(ArgumentMultimap keywords) {
@@ -81,6 +81,7 @@ public class ExpenseContainsKeywordsPredicate implements Predicate<Expense> {
         boolean result = true;
         for (String n: nameKeywords) {
             result = result && item.getName().name.toLowerCase().contains(n.trim().toLowerCase());
+            result = result || (levenshtienDist(item.getName().name, n) < LEVENSHTIEN_THRESHOLD);
         }
         return result;
     }
@@ -94,7 +95,8 @@ public class ExpenseContainsKeywordsPredicate implements Predicate<Expense> {
         Item item = expense.getItem();
         for (String tag : tagKeywords) {
             result = result && item.getTags().stream()
-                    .anyMatch(keyword -> (keyword.tagName.trim().toLowerCase().contains(tag.trim().toLowerCase())));
+                    .anyMatch(keyword -> (keyword.tagName.trim().toLowerCase().contains(tag.trim().toLowerCase()))
+                     || (levenshtienDist(keyword.tagName, tag) < LEVENSHTIEN_THRESHOLD));
         }
         return result;
     }
@@ -127,7 +129,6 @@ public class ExpenseContainsKeywordsPredicate implements Predicate<Expense> {
         boolean result;
         String[] splitDate = dateKeywords.split(":");
         if (splitDate.length == 1) { //if the user only enter an exact date
-            Date chosenDate = new Date(splitDate[0]);
             Calendar cal = Calendar.getInstance();
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             cal.setTime(sdf.parse(dateKeywords));
@@ -139,15 +140,48 @@ public class ExpenseContainsKeywordsPredicate implements Predicate<Expense> {
                     && cal.get(Calendar.MONTH) == expenseCal.get(Calendar.MONTH)
                     && cal.get(Calendar.DATE) == expenseCal.get(Calendar.DATE);
         } else { //if the user enter a range of dates
-            Date start = new Date(splitDate[0]);
-            Date end = new Date(splitDate[1]);
-            boolean isWithinRange = start.before(expense.getDate())
-                    && end.after(expense.getDate());
-            result = start.equals(expense.getDate())
-                    || end.equals(expense.getDate())
+            Calendar start = Calendar.getInstance();
+            Calendar end = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            start.setTime(sdf.parse(splitDate[0]));
+            end.setTime(sdf.parse(splitDate[1]));
+            Calendar expenseCal = Calendar.getInstance();
+            expenseCal.setTime(expense.getDate());
+            boolean isWithinRange = start.before(expenseCal)
+                    && end.after(expenseCal);
+            result = start.equals(expenseCal)
+                    || end.equals(expenseCal)
                     || isWithinRange;
         }
         return result;
+    }
+
+    /**
+     * Calculate Levenshtien distance for almost similar words.
+     * @param a {@code Name}
+     * @param b input keyword
+     * @return levenshtien distance
+     */
+    public static int levenshtienDist(String a, String b) {
+        a = a.toLowerCase();
+        b = b.toLowerCase();
+        // i == 0
+        int [] costs = new int [b.length() + 1];
+        for (int j = 0; j < costs.length; j++) {
+            costs[j] = j;
+        }
+        for (int i = 1; i <= a.length(); i++) {
+            // j == 0; nw = lev(i - 1, j)
+            costs[0] = i;
+            int nw = i - 1;
+            for (int j = 1; j <= b.length(); j++) {
+                int cj = Math.min(1 + Math.min(costs[j], costs[j - 1]),
+                        a.charAt(i - 1) == b.charAt(j - 1) ? nw : nw + 1);
+                nw = costs[j];
+                costs[j] = cj;
+            }
+        }
+        return costs[b.length()];
     }
 
     @Override

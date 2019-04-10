@@ -42,11 +42,11 @@ public class FindExpenseCommand extends Command {
                 String.format(MESSAGE_SUCCESS, model.getFilteredExpenseList().size()));
     }
 
-    //    @Override
-    //    public boolean equals(Object other) {
-    //        return other == this // short circuit if same object
-    //                || (other instanceof FindExpenseCommand // instanceof handles nulls
-    //                && predicate.equals(((FindExpenseCommand) other).predicate)); // state check
-    //    }
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof FindExpenseCommand // instanceof handles nulls
+                && predicate.equals(((FindExpenseCommand) other).predicate)); // state check
+    }
 
 }
