@@ -57,7 +57,6 @@ team project.
 * *Code contributed*: Please click these links to see a sample of my code:
 
 ** Functional code:
-https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&search=yunjun199321[Code contribution]|
 https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/src/main/java/seedu/address/ui/ReportWindow.java[report feature]|
 https://github.com/yunjun199321/main/commit/fcc384f89b82596b30448aa47c6f4b64151e67c7[Auto-complete function]|
 https://github.com/yunjun199321/main/commit/17e48dfc8f152ba857fbe41ac729d03f20c493be[Report command parser and UI button]|
@@ -73,6 +72,7 @@ https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/src/test/java/seedu/ad
 https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/src/test/java/seedu/address/ui/CommandBoxTest.java[auto-complete unit test (handleKeyPress_tab)]|
 https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/src/test/java/systemtests/epiggy/ReportCommandIntegrationTest.java[Report command integration test]
 
+** All my contributions can be viewed https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&search=yunjun199321[RepoSense]
 
 === Other contributions:
 
