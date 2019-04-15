@@ -5,8 +5,7 @@
 :stylesDir: ../stylesheets
 
 image::ppplogo.png[width="300"]
-This portfolio serves to document my contributions to *_ePiggy_*. +
-*_ePiggy_* Github link: https://github.com/CS2103-AY1819S2-W17-4/main
+This portfolio serves to document my contributions to https://github.com/CS2103-AY1819S2-W17-4/main[*_ePiggy_*]. +
 
 == Overview of *_ePiggy_*
 *_ePiggy_* is a simplified expense tracker for students.
@@ -111,7 +110,8 @@ include::../UserGuide.adoc[tag=setGoal]
 
 == Contributions to the Developer Guide
 The following section shows my additions to the developer guide for the `addAllowance`, `deleteAllowance`, `editAllowance` and `setGoal` commands.
-They showcase the technical depth of my contributions as well as to convey technical information to other developers clearly.
+They showcase the technical depth of my contributions as well as the ability to convey
+technical information to other developers clearly.
 
 The full developer guide for *_ePiggy_* can be found https://cs2103-ay1819s2-w17-4.github.io/main/DeveloperGuide.html[here].
 
