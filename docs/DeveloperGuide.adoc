@@ -2197,7 +2197,7 @@ above.
    Expected: all expenses ordered in descending order (of cost) will be shown in the expense list panel.
 .. Test case: `sort $/` and then 'rl' +
    Expected: all expenses ordered in ascending order (of cost) will be shown in the expense list panel.
-.. Test case: `sort $/10 +
+.. Test case: `sort $/10` +
    Expected: invalid command error.
 
 . Sort by `date`
