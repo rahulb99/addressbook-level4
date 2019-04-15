@@ -663,6 +663,7 @@ The command is first parsed into `SetGoalCommandParser`, which separates the arg
 
 ==== Design considerations
 *Aspect: `setGoal` (1 goal) VS `addGoal` (multiple goals)*
+
 * *Alternative 1 (current choice):* `setGoal` (1 goal) +
 ** Pros: Easier to implement. Makes ePiggy easier to use.
 ** Cons: Limits the user experience by allowing only 1 savings goal.
@@ -2021,6 +2022,7 @@ _{ more test cases ... }_
    Error message is shown in the command box.
 .. Other incorrect `editAllowance` commands to try: `editAllowance $/40`, `editAllowance 1 t/Expense`,
    `editAllowance 1 $/0`
+// end::manualtestingallowance[]
 
 === Deleting an allowance
 . Deleting an allowance while there are allowances in the list of allowances and expenses.
@@ -2033,7 +2035,7 @@ _{ more test cases ... }_
    error message is shown in the command box.
 .. Other incorrect `deleteAllowance` commands to try: `deleteAllowance`, `deleteAllowance b`,
    `deleteAllowance 99999` (assuming the list is shorter than 99999)
-// end::manualtestingallowance[]
+
 
 === Deleting an expense
 
