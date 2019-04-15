@@ -52,15 +52,6 @@ public class EPiggyParserTest {
         assertEquals(new AddBudgetCommand(budget), command);
     }
 
-    //@Test
-    //public void parseCommand_addExpense() throws Exception {
-    //    // TODO: Issues with date toString method in ExpenseUtil
-    //    Expense expense = new ExpensesBuilder().build();
-    //    AddExpenseCommand command = (AddExpenseCommand)
-    //            parser.parseCommand(ExpenseUtil.getAddExpenseCommand(expense));
-    //    assertEquals(new AddExpenseCommand(expense), command);
-    //}
-
     @Test
     public void parseCommand_clear() throws Exception {
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);

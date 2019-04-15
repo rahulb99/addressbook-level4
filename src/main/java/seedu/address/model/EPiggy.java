@@ -77,6 +77,7 @@ public class EPiggy implements ReadOnlyEPiggy {
         indicateModified();
     }
 
+    //@@author tehwenyi
     /**
      * Replaces the contents of the person list with {@code persons}.
      * {@code persons} must not contain duplicate persons.
@@ -135,6 +136,7 @@ public class EPiggy implements ReadOnlyEPiggy {
         indicateModified();
     }
 
+    //@@author tehwenyi
     /**
      * Updates the budgetList. Called every time an expense is added, edited or deleted.
      */
@@ -160,8 +162,7 @@ public class EPiggy implements ReadOnlyEPiggy {
         return new SimpleObjectProperty<>(new Cost(expenses.getTotalSavings()));
     }
 
-
-
+    //@@author tehwenyi
     /**
      * Adds a budget to the budgetList.
      * Called by the Command addBudget only.
@@ -174,6 +175,7 @@ public class EPiggy implements ReadOnlyEPiggy {
         indicateModified();
     }
 
+    //@@author tehwenyi
     /**
      * Deletes the budget at the specific index.
      * @param index of the to be deleted budget.
@@ -193,6 +195,7 @@ public class EPiggy implements ReadOnlyEPiggy {
         indicateModified();
     }
 
+    //@@author tehwenyi
     /**
      * Updates the remaining amount and days of the budget.
      * Allowances in the Expense list does not affect the budget.
@@ -219,6 +222,7 @@ public class EPiggy implements ReadOnlyEPiggy {
         return budget;
     }
 
+    //@@author tehwenyi
     /**
      * Calculates the remaining days for the budget based on the current date.
      * @param budget to calculate the remaining days for.
@@ -234,6 +238,7 @@ public class EPiggy implements ReadOnlyEPiggy {
         return new Period((int) Math.ceil(diff));
     }
 
+    //@@author tehwenyi
     /**
      * Checks if there are any overlapping budgets.
      */
@@ -262,7 +267,6 @@ public class EPiggy implements ReadOnlyEPiggy {
         expenses.sort(comparator);
     }
 
-
     /**
      * Replaces the given expense {@code target} in the list with {@code editedExpense}.
      * {@code target} must exist in the expense tracker.
@@ -277,6 +281,7 @@ public class EPiggy implements ReadOnlyEPiggy {
         indicateModified();
     }
 
+    //@@author tehwenyi
     /**
      * Replaces the current/previous budget in the list with {@code editedBudget}.
      * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
@@ -288,6 +293,7 @@ public class EPiggy implements ReadOnlyEPiggy {
         indicateModified();
     }
 
+    //@@author tehwenyi
     /**
      * Gets the current budget's index.
      * @return -1 if there is no current budget.
@@ -355,7 +361,6 @@ public class EPiggy implements ReadOnlyEPiggy {
     public String toString() {
         return expenses.asUnmodifiableObservableList() + " expenselist\n"
             + budgetList.asUnmodifiableObservableList() + " budgets";
-        // TODO: refine later
     }
 
     @Override
@@ -373,6 +378,7 @@ public class EPiggy implements ReadOnlyEPiggy {
         return FXCollections.unmodifiableObservableList(items);
     }
 
+    //@@author tehwenyi
     /**
      * Gets the current budget list for ePiggy.
      */
@@ -386,16 +392,6 @@ public class EPiggy implements ReadOnlyEPiggy {
         return other == this // short circuit if same object
                 || (other instanceof EPiggy // instanceof handles nulls
                 && expenses.equals(((EPiggy) other).expenses));
-//        if (other == this) {
-//            return true;
-//        }
-//        if (!(other instanceof EPiggy)) {
-//            return false;
-//        }
-//        EPiggy otherepiggy = (EPiggy) other;
-//        return otherepiggy.getExpenseList().equals(getExpenseList())
-//                && otherepiggy.getGoal().equals(getGoal())
-//                && otherepiggy.getBudgetList().equals(getBudgetList());
     }
 
     @Override

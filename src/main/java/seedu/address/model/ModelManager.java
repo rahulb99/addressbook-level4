@@ -146,10 +146,12 @@ public class ModelManager implements Model {
         setSelectedExpense(allowance);
     }
 
+    //@@author tehwenyi
     @Override
     public void addBudget(int index, Budget budget) {
         versionedEPiggy.addBudget(index, budget); }
 
+    //@@author tehwenyi
     /**
      * Checks if there are any overlapping budgets.
      */
@@ -157,6 +159,7 @@ public class ModelManager implements Model {
         return versionedEPiggy.budgetsOverlap(startDate, endDate, earlierBudget);
     }
 
+    //@@author tehwenyi
     @Override
     public void deleteBudgetAtIndex(int index) {
         versionedEPiggy.deleteBudgetAtIndex(index);
@@ -170,6 +173,7 @@ public class ModelManager implements Model {
         }
     }
 
+    //@@author tehwenyi
     @Override
     public ObservableList<Budget> getBudgetList() {
         return versionedEPiggy.getBudgetList();
@@ -180,6 +184,7 @@ public class ModelManager implements Model {
         return versionedEPiggy.getExpenseList();
     }
 
+    //@@author tehwenyi
     @Override
     public int getCurrentBudgetIndex() {
         return versionedEPiggy.getCurrentBudgetIndex();
@@ -207,6 +212,7 @@ public class ModelManager implements Model {
         versionedEPiggy.setPerson(target, editedPerson);
     }
 
+    //@@author tehwenyi
     @Override
     public void setCurrentBudget(Budget editedBudget) {
         requireNonNull(editedBudget);
@@ -336,7 +342,7 @@ public class ModelManager implements Model {
     @Override
     public void setSelectedExpense(Expense expense) {
         if (expense != null && !filteredExpenses.contains(expense)) {
-            throw new PersonNotFoundException(); //TODO
+            throw new PersonNotFoundException();
         }
         selectedExpense.setValue(expense);
     }

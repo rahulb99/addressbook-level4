@@ -17,6 +17,8 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.epiggy.Budget;
 
+//@@author tehwenyi
+
 /**
  * Sets a budget for the total expenses.
  */
@@ -46,7 +48,7 @@ public class AddBudgetCommand extends Command {
     private final Budget toAdd;
 
     /**
-     * Creates an AddCommand to add the specified {@code Person}
+     * Creates an AddBudgetCommand to add the specified {@code Budget}
      */
     public AddBudgetCommand(Budget budget) {
         requireNonNull(budget);

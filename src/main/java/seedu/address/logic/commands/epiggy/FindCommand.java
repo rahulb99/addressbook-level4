@@ -12,7 +12,7 @@ import seedu.address.model.epiggy.ExpenseContainsKeywordsPredicate;
 
 //@@author rahulb99
 /**
- * Finds and lists all expenses in EPiggy whose expense contains any of the argument keywords.
+ * Finds and lists all expenses in ePiggy whose expense contains any of the argument keywords.
  * Keyword matching is case insensitive.
  */
 public class FindCommand extends Command {

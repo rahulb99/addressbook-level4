@@ -22,7 +22,6 @@ import seedu.address.model.person.Person;
  * Adds a person to the address book.
  */
 public class AddCommand extends Command {
-    // TODO: Modify add command and pass all the JUnit test cases.
     public static final String COMMAND_WORD = "add";
     public static final String COMMAND_ALIAS = "a";
 

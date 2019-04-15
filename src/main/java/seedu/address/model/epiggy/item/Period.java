@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+//@@author tehwenyi
+
 /**
  * Represents a time period.
  * Guarantees: immutable

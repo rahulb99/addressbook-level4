@@ -72,14 +72,14 @@ image::highlights.png[width="150"]
 make the UI simple and concise for our target users whilst conveying the crucial information.
 
 === Code Contributed
-As of 15th April 2019, I have contributed over 50 Pull Requests and reviewed over 20 Pull Requests.
+As of 15th April 2019, I have contributed over 60 Pull Requests.
 
-* *Functional code:* link:https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/src/main/java/seedu/address/logic/commands/epiggy/AddBudgetCommand.java[Add Budget]
+* *Main functional codes:* link:https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/src/main/java/seedu/address/logic/commands/epiggy/AddBudgetCommand.java[Add Budget]
 | link:https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/src/main/java/seedu/address/logic/commands/epiggy/EditBudgetCommand.java[Edit Budget]
 | link:https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/src/main/java/seedu/address/logic/commands/epiggy/DeleteBudgetCommand.java[Delete Budget]
 | link:https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/src/main/java/seedu/address/ui/BudgetPanel.java[Budget Panel]
 | link:https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/src/main/java/seedu/address/ui/BudgetCard.java[Budget Card] +
-* *Test code:* link:https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/src/test/java/seedu/address/logic/commands/epiggy/AddBudgetCommandTest.java[Add Budget]
+* *Main test codes:* link:https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/src/test/java/seedu/address/logic/commands/epiggy/AddBudgetCommandTest.java[Add Budget]
 | link:https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/src/test/java/seedu/address/logic/commands/epiggy/EditBudgetCommandTest.java[Edit Budget Budget]
 | link:https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/src/test/java/seedu/address/logic/commands/epiggy/DeleteBudgetCommandTest.java[Delete Budget]
 | link:https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/src/test/java/systemtests/epiggy/AddBudgetCommandSystemTest.java[Budget System Test]
@@ -88,11 +88,13 @@ View all the code I contributed link:https://nus-cs2103-ay1819s2.github.io/cs210
 
 === Other Contributions
 
-* As of 15th April 2019:
-** Reviewed over 20 pull requests on ePiggy's Github.
+* Managed releases v1.3 and v1.4.
+* As of *15th April 2019*:
+** Reviewed over 25 pull requests on ePiggy's Github.
 ** Raised over 10 issues on ePiggy's Github.
 * Refactored Address Book to ePiggy.
-* Created the *.jar file for ePiggy.
+* Set up Coveralls for the team.
+* Identified bugs in ePiggy and raised them as issues (https://github.com/CS2103-AY1819S2-W17-4/main/issues/109[#109], https://github.com/CS2103-AY1819S2-W17-4/main/issues/167[#167], https://github.com/CS2103-AY1819S2-W17-4/main/issues/242[#242]).
 * Standardised the language and formatting of the user and developer guide to provide greater coherence.
 
 == Contributions to the User Guide
@@ -106,7 +108,7 @@ Click link:https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/docs/UserGu
 
 image::overview.png[width="130"]
 
-* Standardised and improved the aesthetics of the User Guide
+* *Standardised and improved the aesthetics of the User Guide*
 
 I designed and added the header and images across the user guide to make it more
 inviting and reader friendly, considering that our target users are students. Below are some examples of my designs:
@@ -115,7 +117,7 @@ image::userguideheaders.png[width="500"]
 
 _Figure 1: Header and section headers added in the User Guide to increase readability and better engage our target audience_ +
 
-* Contributed content to the User Guide
+* *Contributed content to the User Guide*
 
 I wrote the *Introduction* of the User Guide, making sure it is clear, concise and engaging.
 Also, I wrote the *Budgeting* feature which teaches users how to use the `budget` commands in a clear and informative
@@ -152,7 +154,7 @@ Developer Guide!
 
 image::overview.png[width="130"]
 
-* Standardised and improved the aesthetics of the Developer Guide
+* *Standardised and improved the aesthetics of the Developer Guide*
 
 I designed and added the header and images across the developer guide to
 reduce clutter of words and make it more readable. Below are some examples of my designs:
@@ -161,7 +163,7 @@ image::developerguideheaders.png[width="500"]
 
 _Figure 2: Header and images added in the Developer Guide_ +
 
-* Contributed content to the Developer Guide
+* *Contributed content to the Developer Guide*
 
 I documented the implementation details and design considerations for the *Budgeting* feature.
 I also created diagrams to aid in the explanations. My contributions can be found below, in Sections 4.1 to 4.3.

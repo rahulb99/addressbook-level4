@@ -13,8 +13,10 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.epiggy.Budget;
 
+//@@author tehwenyi
+
 /**
- * Edits the current budget in ePiggy.
+ * Deletes a budget from ePiggy.
  */
 public class DeleteBudgetCommand extends Command {
 
@@ -27,7 +29,6 @@ public class DeleteBudgetCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_BUDGET_SUCCESS = "Deleted budget. \nDeleted budget's details:\n%1$s";
-    //public static final String MESSAGE_INDEX_OUT_OF_BOUNDS = "The index does not exist on the budget list.";
 
     private final Index targetIndex;
 

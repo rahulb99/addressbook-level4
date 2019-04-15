@@ -11,8 +11,10 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.epiggy.Budget;
 
+//@@author tehwenyi
+
 /**
- * Panel containing the budget status.
+ * Panel containing the budgets and their information.
  */
 public class BudgetPanel extends UiPart<Region> {
     private static final String FXML = "BudgetPanel.fxml";
@@ -25,26 +27,10 @@ public class BudgetPanel extends UiPart<Region> {
         super(FXML);
         budgetView.setItems(budgetList);
         budgetView.setCellFactory(listView -> new BudgetListViewCell());
-        //        budget.addListener((observable, oldValue, newValue) -> {
-        //            logger.fine("Budget changed to: " + newValue);
-        //            // Don't modify selection if we are already selecting the selected expense,
-        //            // otherwise we would have an infinite loop.
-        //            if (Objects.equals(budgetView.getSelectionModel().getSelectedItem(), newValue)) {
-        //                return;
-        //            }
-        //
-        //            if (newValue == null) {
-        //                budgetView.getSelectionModel().clearSelection();
-        //            } else {
-        //                int index = budgetView.getItems().indexOf(newValue);
-        //                budgetView.scrollTo(index);
-        //                budgetView.getSelectionModel().clearAndSelect(index);
-        //            }
-        //        });
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Budget} using a {@code ExpenseCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Budget} using a {@code BudgetCard}.
      */
     class BudgetListViewCell extends ListCell<Budget> {
         @Override

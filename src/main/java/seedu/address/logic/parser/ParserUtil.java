@@ -140,7 +140,6 @@ public class ParserUtil {
     public static Date parseDate(String date) throws ParseException {
         requireNonNull(date);
         Date parsedDate;
-        // TODO add more forms of setting date eg. dd.mm.yyyy
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         dateFormat.setLenient(false);
         try {

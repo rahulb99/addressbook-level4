@@ -7,8 +7,10 @@ import java.util.Date;
 import seedu.address.model.epiggy.item.Cost;
 import seedu.address.model.epiggy.item.Period;
 
+//@@author tehwenyi
+
 /**
- * Represents a Budget in the expense book.
+ * Represents a Budget in ePiggy.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Budget {

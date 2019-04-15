@@ -14,12 +14,13 @@ import javafx.collections.ObservableList;
 
 import seedu.address.model.epiggy.exceptions.DuplicateBudgetException;
 
+//@@author tehwenyi
 
 /**
  * A list of budgetList that enforces uniqueness between its elements and does not allow nulls.
  * A budget is considered unique by comparing using {@code Budget#equals(Budget)}. As such, adding and updating of
  * budgetList uses Budget#equals(Budget) for equality so as to ensure that the budget being added or updated is
- * unique in terms of identity in the UniquePersonList. However, the removal of a budget uses Budget#equals(Object) so
+ * unique in terms of identity in the UniqueBudgetList. However, the removal of a budget uses Budget#equals(Object) so
  * as to ensure that the budget with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
@@ -31,8 +32,8 @@ public class UniqueBudgetList implements Iterable<Budget> {
             FXCollections.unmodifiableObservableList(internalList);
 
     /**
-     * Adds a new budget to the top of the list.
-     * Only called when a new budget is added.
+     * Adds a new budget to the specified index.
+     * @param index the index which the budget will be added at.
      * @param toAdd the budget to be added.
      */
     public void addAtIndex(int index, Budget toAdd) {
@@ -43,6 +44,7 @@ public class UniqueBudgetList implements Iterable<Budget> {
 
     /**
      * Replaces the budget at index {@code index} with budget {@code toSet}.
+     * @param index the index which the budget will be added at.
      * @param toSet the budget to be added.
      */
     public void replaceAtIndex(int index, Budget toSet) {

@@ -19,8 +19,10 @@ import seedu.address.model.epiggy.Budget;
 import seedu.address.model.epiggy.item.Cost;
 import seedu.address.model.epiggy.item.Period;
 
+//@@author tehwenyi
+
 /**
- * Parses input arguments and creates a new AddCommand object
+ * Parses input arguments and creates a new AddBudgetCommand object
  */
 public class AddBudgetCommandParser implements Parser<AddBudgetCommand> {
 
