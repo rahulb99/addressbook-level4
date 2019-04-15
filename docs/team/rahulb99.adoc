@@ -67,7 +67,7 @@ https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/src/main/java/seedu/ad
  Parser Tests - [https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/src/test/java/seedu/address/logic/parser/epiggy/FindCommandParserTest.java[1]],
  [https://github.com/CS2103-AY1819S2-W17-4/main/blob/master/src/test/java/seedu/address/logic/parser/epiggy/SortCommandParserTest.java[2]].
 
-* *Code contributed*: [https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#search=rahulb99&sort=displayName&since=2019-02-10&until=2019-04-30&timeframe=day&reverse=false&repoSort=false[Reposense]]
+* *Code contributed*: [https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&search=rahulb99[Reposense]]
 
 * *Other contributions*:
 
