@@ -582,7 +582,7 @@ Step 7: `SortCommand#execute()`,which then calls `Model#updateFilteredExpenseLis
 Step 8: Expense List panel is updated by sorted expenses. A `CommandResult` is then created and
 returned to `LogicManager`.
 
-= //end::sortexpense[]
+//end::sortexpense[]
 === Budget Features
 
 ==== Add budget feature
