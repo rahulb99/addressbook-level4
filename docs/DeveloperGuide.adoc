@@ -579,11 +579,12 @@ Step 7: `SortCommand#execute()`,which then calls `Model#updateFilteredExpenseLis
         method to update the predicate of `FilteredList<Expense>`. `FilteredList` now contains all
         expenses in sorted order. +
 
-Step 6: Expense List panel is updated by sorted expenses. A `CommandResult` is then created and
+Step 8: Expense List panel is updated by sorted expenses. A `CommandResult` is then created and
 returned to `LogicManager`.
 
-=== Budget Features
 //end::sortexpense[]
+=== Budget Features
+
 ==== Add budget feature
 
 // tag::addbudget[]

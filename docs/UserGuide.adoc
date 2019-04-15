@@ -509,6 +509,11 @@ Returns ePiggy to a previously undone state. Use this if you wish to undo an und
 *Format:* `redo`
 // end::redo[]
 
+==== Clearing all entries : `clear`
+Clears all entries (allowances, budgets, expenses and goal) from ePiggy.
+
+*Format:* `clear`
+
 ==== Exiting the program : `exit`
 
 Exits the program. +
