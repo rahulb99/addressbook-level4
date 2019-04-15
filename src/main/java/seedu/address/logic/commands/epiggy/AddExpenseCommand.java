@@ -14,7 +14,7 @@ import seedu.address.model.Model;
 import seedu.address.model.epiggy.Expense;
 
 /**
- * Adds a person to the toAdd book.
+ * Adds an expense to the expense list.
  */
 public class AddExpenseCommand extends Command {
 

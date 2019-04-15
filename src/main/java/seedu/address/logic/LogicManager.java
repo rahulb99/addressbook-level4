@@ -89,6 +89,7 @@ public class LogicManager implements Logic {
         return model.getFilteredExpenseList();
     }
 
+    //@@author tehwenyi
     @Override
     public ObservableList<Budget> getFilteredBudgetList() {
         return model.getFilteredBudgetList();
@@ -139,10 +140,12 @@ public class LogicManager implements Logic {
         model.setSelectedExpense(expense);
     }
 
+    //@@author tehwenyi
     @Override
     public void setCurrentBudget(Budget budget) {
         model.setCurrentBudget(budget); }
 
+    //@@author tehwenyi
     @Override
     public void addBudget(int index, Budget budget) {
         model.addBudget(index, budget); }

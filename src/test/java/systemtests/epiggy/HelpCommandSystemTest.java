@@ -37,7 +37,6 @@ public class HelpCommandSystemTest extends EPiggySystemTestWithDefaultData {
         assertHelpWindowOpen();
 
         //use menu button
-        // TODO: this test case may fail sometime. comment it if it happens.
         getMainMenu().openHelpWindowUsingMenu();
         assertHelpWindowOpen();
 

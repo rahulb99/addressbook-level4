@@ -76,7 +76,6 @@ public class TypicalReports {
      * Returns an {@code EPiggy} with all the typical expenses, allowance and budget.
      */
     public static EPiggy getTypicalEPiggy() {
-        // todo: change the method here
         EPiggy ePiggy = new EPiggy();
 
         //add budgets into ePiggy

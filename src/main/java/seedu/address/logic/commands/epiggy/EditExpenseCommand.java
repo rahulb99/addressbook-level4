@@ -60,8 +60,8 @@ public class EditExpenseCommand extends Command {
     final EditExpenseDescriptor editExpenseDescriptor;
 
     /**
-     * @param index of the person in the filtered person list to edit
-     * @param editExpenseDescriptor details to edit the person with
+     * @param index of the expense in the filtered expense list to edit
+     * @param editExpenseDescriptor details to edit the expense with
      */
     public EditExpenseCommand(Index index, EditExpenseDescriptor editExpenseDescriptor) {
         requireNonNull(index);
@@ -103,7 +103,6 @@ public class EditExpenseCommand extends Command {
         Cost updatedCost = editExpenseDescriptor.getCost().orElse(expenseToEdit.getItem().getCost());
         Date updatedDate = editExpenseDescriptor.getDate().orElse(expenseToEdit.getDate());
         Set<Tag> updatedTags = editExpenseDescriptor.getTags().orElse(expenseToEdit.getItem().getTags());
-        System.out.println(updatedTags);
         return new Expense(new Item(updatedName, updatedCost, updatedTags), updatedDate);
     }
 

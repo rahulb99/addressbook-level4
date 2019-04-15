@@ -26,6 +26,8 @@ import org.junit.rules.ExpectedException;
 import seedu.address.model.epiggy.exceptions.DuplicateBudgetException;
 import seedu.address.testutil.epiggy.BudgetBuilder;
 
+//@@author tehwenyi
+
 public class UniqueBudgetListTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();

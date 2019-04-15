@@ -151,7 +151,7 @@ public class EPiggyTest {
         private final ObservableList<Person> persons = FXCollections.observableArrayList();
         private final ObservableList<Expense> expenses = FXCollections.observableArrayList();
         private final ObservableList<Item> items = FXCollections.observableArrayList();
-        private ObservableList<Budget> budgets; //TODO
+        private ObservableList<Budget> budgets;
         private SimpleObjectProperty<Goal> goal;
 
 
