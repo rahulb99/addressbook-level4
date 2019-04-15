@@ -16,9 +16,9 @@ image::images/Ui.png[width="600"]
 endif::[]
 
 Have you ever felt that regular expense trackers are too complicated? We understand! +
-Introducing to you, ePiggy - a simplified expense tracker application targeted specifically towards the needs of students! We're here to make managing money a breeze for even the youngest students.
+Introducing to you, *_ePiggy_* - a simplified expense tracker application targeted towards the needs of students! We're here to make managing money a breeze for even the youngest students.
 
-Interested to know more? Visit our <<UserGuide#, User Guide>> to find out more! +
+Interested to know more? Visit our <<UserGuide#, User Guide>> to get started! +
 
 ePiggy is an open source project that welcomes contributions from the community. If you would like to contribute, visit the <<DeveloperGuide#, Developer Guide>> to get started!
 

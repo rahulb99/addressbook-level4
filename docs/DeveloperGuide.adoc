@@ -2006,6 +2006,7 @@ These instructions only provide a starting point for testers to work on; testers
    Error message is shown in the command box.
 .. Other incorrect `editAllowance` commands to try: `editAllowance $/40`, `editAllowance 1 t/Expense`,
    `editAllowance 1 $/0`
+// end::manualtestingallowance[]
 
 === Deleting an allowance
 . Deleting an allowance while there are allowances in the list of allowances and expenses.
@@ -2018,7 +2019,7 @@ These instructions only provide a starting point for testers to work on; testers
    error message is shown in the command box.
 .. Other incorrect `deleteAllowance` commands to try: `deleteAllowance`, `deleteAllowance b`,
    `deleteAllowance 99999` (assuming the list is shorter than 99999)
-// end::manualtestingallowance[]
+
 
 === Deleting an expense
 
